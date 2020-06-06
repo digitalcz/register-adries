@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "digitalcz\\register-adries\\": "src"
+            "DigitalCz\\RegisterAdries\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "digitalcz\\register-adries\\": "tests"
+            "DigitalCz\\RegisterAdries\\": "tests"
         }
     },
     "scripts": {

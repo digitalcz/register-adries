@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace digitalcz\register-adries;
+namespace DigitalCz\RegisterAdries;
 
 class SkeletonClass
 {

@@ -10,7 +10,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="digitalcz Test Suite">
+        <testsuite name="DigitalCz Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
