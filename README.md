@@ -20,7 +20,7 @@ $ composer require digitalcz/register-adries
 ## Usage
 
 ``` php
-$skeleton = new DigitalCz\RegisterAdries();
+$skeleton = new DigitalCz\RegisterAdries\Http();
 echo $skeleton->echoPhrase('Hello, League!');
 ```
 
