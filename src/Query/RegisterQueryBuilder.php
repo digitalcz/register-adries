@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\RegisterAdries\Query;
 
 use DigitalCz\RegisterAdries\Http\RegisterClient;
+use Psr\Http\Message\ResponseInterface;
 
 class RegisterQueryBuilder
 {
@@ -59,7 +60,7 @@ class RegisterQueryBuilder
         return $this;
     }
 
-    public function execute()
+    public function execute(): ResponseInterface
     {
         return $this->client->request($this->getQuery());
     }

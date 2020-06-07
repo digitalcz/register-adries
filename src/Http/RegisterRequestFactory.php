@@ -8,6 +8,7 @@ use DigitalCz\RegisterAdries\Query\RegisterQuery;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\StreamInterface;
 
 class RegisterRequestFactory
 {
@@ -38,7 +39,7 @@ class RegisterRequestFactory
             ->withHeader('Content-Type', 'application/json');
     }
 
-    private function createBody(RegisterQuery $query)
+    private function createBody(RegisterQuery $query): StreamInterface
     {
         $content = json_encode($query->toArray());
 

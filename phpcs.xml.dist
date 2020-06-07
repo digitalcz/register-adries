@@ -3,6 +3,9 @@
     <description>The coding standard of register-adries package</description>
     <arg value="p" />
 
+    <file>src</file>
+    <file>tests</file>
+
     <config name="ignore_warnings_on_exit" value="1" />
     <config name="ignore_errors_on_exit" value="1" />
 

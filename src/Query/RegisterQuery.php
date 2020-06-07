@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Query;
 
-use DigitalCz\RegisterAdries\Http\RegisterClient;
-
 class RegisterQuery
 {
     /**
-     * @var RegisterQueryResource|null
+     * @var RegisterQueryResource
      */
     private $resource;
 
@@ -58,6 +56,9 @@ class RegisterQuery
         $this->offset = $offset;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(): array
     {
         $array = [
