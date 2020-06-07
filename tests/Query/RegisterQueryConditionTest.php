@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 class RegisterQueryConditionTest extends TestCase
 {
-
     public function testCreate(): void
     {
         $condition = new RegisterQueryCondition('foo', 'bar', RegisterQueryCondition::EQ);
