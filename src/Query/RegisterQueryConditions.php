@@ -6,7 +6,6 @@ namespace DigitalCz\RegisterAdries\Query;
 
 class RegisterQueryConditions extends \ArrayObject
 {
-
     public function toArray(): array
     {
         $array = [];
