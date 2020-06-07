@@ -17,6 +17,9 @@ final class RegisterQueryResource
     private const BUILDINGS = 'buildings';
     private const ENTRANCES = 'entrances';
 
+    /**
+     * @var string[]
+     */
     private static $ids = [
         self::REGIONS => '3bbb0b04-8732-4099-b074-c7bd8f8fa080',
         self::DISTRICTS => '1829233e-53f3-4c6a-9ad6-b27f33ec7550',

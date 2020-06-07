@@ -4,8 +4,16 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Query;
 
-class RegisterQueryConditions extends \ArrayObject
+use ArrayObject;
+
+/**
+ * @extends ArrayObject<int, RegisterQueryCondition>
+ */
+class RegisterQueryConditions extends ArrayObject
 {
+    /**
+     * @return array<string, string>
+     */
     public function toArray(): array
     {
         $array = [];

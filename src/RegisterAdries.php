@@ -6,10 +6,6 @@ namespace DigitalCz\RegisterAdries;
 
 use DigitalCz\RegisterAdries\Http\RegisterClient;
 use DigitalCz\RegisterAdries\Query\RegisterQueryBuilder;
-use Psr\Http\Client\ClientInterface;
-use Psr\Http\Message\RequestFactoryInterface;
-use Psr\Http\Message\RequestInterface;
-use UnexpectedValueException;
 
 final class RegisterAdries
 {

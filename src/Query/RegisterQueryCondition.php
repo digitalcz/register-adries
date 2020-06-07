@@ -14,6 +14,9 @@ class RegisterQueryCondition
     public const GTE = '>=';
     public const LTE = '<=';
 
+    /**
+     * @var string[]
+     */
     private static $availabileOperators = [
         self::EQ,
         self::GT,
