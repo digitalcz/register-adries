@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Query;
 
@@ -47,7 +49,7 @@ class RegisterQueryCondition
     private function guardOperator(string $operator): void
     {
         if (!in_array($operator, self::$availabileOperators, true)) {
-            throw new InvalidArgumentException('Unknown operator '. $operator);
+            throw new InvalidArgumentException('Unknown operator ' . $operator);
         }
     }
 
