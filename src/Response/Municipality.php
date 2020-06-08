@@ -4,6 +4,12 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Response;
 
+/**
+ * Obsahuje informácie o obciach SR. Obsahovo tento dataset zodpovedá
+ * základnému číselníku CL000025 - Lokálna štatistická územná jednotka 2 - obec.
+ *
+ * @see https://data.gov.sk/dataset/register-adries-register-obci
+ */
 final class Municipality extends Record
 {
     /**

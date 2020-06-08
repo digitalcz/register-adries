@@ -4,6 +4,12 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Response;
 
+/**
+ * Obsahuje informácie o okresoch SR. Obsahovo tento dataset zodpovedá
+ * základnému číselníku CL000024 - Lokálna štatistická územná jednotka 1 - okres.
+ *
+ * @see https://data.gov.sk/dataset/register-adries-register-okresov
+ */
 final class County extends Record
 {
     /**

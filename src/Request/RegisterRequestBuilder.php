@@ -9,7 +9,7 @@ use DigitalCz\RegisterAdries\Http\RegisterClient;
 use DigitalCz\RegisterAdries\RegisterResource;
 use DigitalCz\RegisterAdries\Response\Response;
 
-class RegisterRequestBuilder
+final class RegisterRequestBuilder
 {
     /**
      * @var RegisterClient

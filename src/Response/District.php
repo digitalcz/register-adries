@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Response;
 
+/**
+ * Obsahuje informácie o častiach obcí SR. Obsahovo tento dataset zodpovedá základnému číselníku CL010141 - Časť obce.
+ *
+ * @see https://data.gov.sk/dataset/register-adries-register-casti-obci
+ */
 final class District extends Record
 {
     /**

@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Response;
 
+/**
+ * Obsahuje informácie o bytoch v SR.
+ *
+ * @see https://data.gov.sk/dataset/register-adries-register-bytov
+ */
 final class Unit extends Record
 {
     /**

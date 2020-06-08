@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Response;
 
-class Response
+final class Response
 {
     /**
      * @var Region[]

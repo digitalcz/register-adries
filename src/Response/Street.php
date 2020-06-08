@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Response;
 
+/**
+ * Obsahuje informácie o uliciach v SR.
+ *
+ * @see https://data.gov.sk/dataset/register-adries-register-ulic
+ */
 final class Street extends Record
 {
     /**

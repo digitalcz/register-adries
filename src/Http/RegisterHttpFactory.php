@@ -11,7 +11,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
 use RuntimeException;
 
-class RegisterHttpFactory implements RegisterHttpFactoryInterface
+final class RegisterHttpFactory implements RegisterHttpFactoryInterface
 {
     private const SEARCH_URI = 'https://data.gov.sk/api/action/datastore_search';
     private const SEARCH_URI_SQL = 'https://data.gov.sk/api/action/datastore_search_sql';
@@ -34,29 +34,27 @@ class RegisterHttpFactory implements RegisterHttpFactoryInterface
 
     public function createSimpleRequest(RegisterRequest $request): RequestInterface
     {
-        return $this->requestFactory
-            ->createRequest('POST', self::SEARCH_URI)
-            ->withBody($this->encodeBody($request->asArray()))
-            ->withHeader('Accept', 'application/json')
-            ->withHeader('Content-Type', 'application/json');
+        return $this->createHttpRequest(self::SEARCH_URI, $request->asArray());
     }
 
     public function createSqlRequest(RegisterRequest $request): RequestInterface
     {
-        $sql = $request->asSql();
-        return $this->requestFactory
-            ->createRequest('POST', self::SEARCH_URI_SQL)
-            ->withBody($this->encodeBody(['sql' => $sql]))
-            ->withHeader('Accept', 'application/json')
-            ->withHeader('Content-Type', 'application/json');
+        return $this->createHttpRequest(self::SEARCH_URI_SQL, ['sql' => $request->asSql()]);
     }
 
     public function createSqlCountRequest(RegisterRequest $request): RequestInterface
     {
-        $sql = $request->asSqlCount();
+        return $this->createHttpRequest(self::SEARCH_URI_SQL, ['sql' => $request->asSqlCount()]);
+    }
+
+    /**
+     * @param array<mixed> $body
+     */
+    private function createHttpRequest(string $uri, array $body): RequestInterface
+    {
         return $this->requestFactory
-            ->createRequest('POST', self::SEARCH_URI_SQL)
-            ->withBody($this->encodeBody(['sql' => $sql]))
+            ->createRequest('POST', $uri)
+            ->withBody($this->encodeBody($body))
             ->withHeader('Accept', 'application/json')
             ->withHeader('Content-Type', 'application/json');
     }

@@ -23,14 +23,62 @@ $ composer require digitalcz/register-adries
 $register = new DigitalCz\RegisterAdries\RegisterAdries();
 
 $response = $register
-    ->request()   // creates RequestBuilder
-    ->regions()   // set resource to fetch
-    ->limit(5)    // max number of result (default 100)
-    ->offset(5)   // position of first result (default 0)
-    ->execute();  // executes the request and return results 
+    ->request()             // creates RequestBuilder
+    ->regions()             // set resource to fetch
+    ->execute();            // executes the request and return results 
 
-$response->getRecords(); // array of DigitalCz\RegisterAdries\Response\Region
+$response->getRecords();    // DigitalCz\RegisterAdries\Response\Region[]
+$response->getTotal();      // total number of results
 ```
+
+#### With conditions
+
+```php
+$register
+    // ...
+    ->whereEq('countyName', 'Košice')   // adds condition `countyName = Košice`
+    ->whereGt('versionId', 40)          // adds condition `versionId > 40` 
+    ->onlyValid()                       // adds condition `WHERE {now} > validFrom AND {now} < validTo`
+```
+
+#### Available resources
+ - region - https://data.gov.sk/dataset/register-adries-register-krajov
+ - county - https://data.gov.sk/dataset/register-adries-register-okresov
+ - municipality - https://data.gov.sk/dataset/register-adries-register-obci
+ - district - https://data.gov.sk/dataset/register-adries-register-casti-obci
+ - street - https://data.gov.sk/dataset/register-adries-register-ulic
+ - unit - https://data.gov.sk/dataset/register-adries-register-bytov
+ - building - https://data.gov.sk/dataset/register-adries-register-budov
+ - entrance - https://data.gov.sk/dataset/register-adries-register-vchodov
+
+Available on builder as
+```php
+$register 
+    // ...
+    ->regions()
+    ->counties()
+    ->municipalities()
+    ->districts()
+    ->streets()
+    ->units()
+    ->buildings()
+    ->entrances()
+// It isn't possible to chain more resources, this is just example
+```
+
+#### Using your own http client
+
+You can provide PSR18 http client (and PSR17 factories) when creating instance of RegisterAdries, if no arguments are provided Psr18ClientDiscovery and Psr17FactoryDiscovery will be used (see https://php-http.readthedocs.io/en/latest/discovery.html).
+```php
+// example
+$symfonyHttpClient = Symfony\Component\HttpClient\Psr18Client();
+
+$register = new DigitalCz\RegisterAdries\RegisterAdries(
+    $symfonyHttpClient, 
+    $symfonyHttpClient   // symfony PSR18 client is also PSR17 factory
+);
+```
+
 
 ## Change log
 

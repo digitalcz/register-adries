@@ -8,7 +8,7 @@ use DateTimeInterface;
 use InvalidArgumentException;
 use UnexpectedValueException;
 
-class RegisterRequestCondition
+final class RegisterRequestCondition
 {
     public const EQ = '=';
     public const GT = '>';

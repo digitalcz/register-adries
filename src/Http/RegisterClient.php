@@ -12,7 +12,7 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
-class RegisterClient
+final class RegisterClient
 {
     /**
      * @var ClientInterface
@@ -58,11 +58,15 @@ class RegisterClient
 
     private function sqlRequest(RegisterRequest $request): Response
     {
+        // results request
         $sqlHttpRequest = $this->httpFactory->createSqlRequest($request);
         $result = $this->sendHttpRequest($sqlHttpRequest);
 
+        // count request
         $sqlCountHttpRequest = $this->httpFactory->createSqlCountRequest($request);
         $countResult = $this->sendHttpRequest($sqlCountHttpRequest);
+
+        // add count to results response
         $result['total']  = (int)($countResult['records'][0]['count'] ?? 0);
 
         return $this->responseFactory->createResponse($request->getResource(), $result);

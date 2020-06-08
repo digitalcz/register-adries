@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Response;
 
+/**
+ * Obsahuje informácie o budovách (súpisných číslach) v SR.
+ *
+ * @see https://data.gov.sk/dataset/register-adries-register-budov
+ */
 final class Building extends Record
 {
     /**

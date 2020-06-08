@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Request;
 
-class RegisterRequestConditions
+final class RegisterRequestConditions
 {
     /**
      * @var RegisterRequestCondition[]

@@ -6,6 +6,11 @@ namespace DigitalCz\RegisterAdries\Response;
 
 use DateTimeImmutable;
 
+/**
+ * Obsahuje informácie o vchodoch (orientačných číslach) v SR.
+ *
+ * @see https://data.gov.sk/dataset/register-adries-register-vchodov
+ */
 final class Entrance extends Record
 {
     /**
