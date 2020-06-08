@@ -7,7 +7,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Provides communication with https://data.gov.sk/dataset/register-adries
+Provides communication with https://data.gov.sk/dataset/register-adries in PHP via PSR-18 http client
 
 ## Install
 

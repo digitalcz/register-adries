@@ -2,17 +2,19 @@
 
 declare(strict_types=1);
 
-namespace DigitalCz\RegisterAdries\Query;
+namespace DigitalCz\RegisterAdries\Request;
 
-class RegisterQuery
+use DigitalCz\RegisterAdries\RegisterResource;
+
+class RegisterRequest
 {
     /**
-     * @var RegisterQueryResource
+     * @var RegisterResource
      */
     private $resource;
 
     /**
-     * @var RegisterQueryConditions
+     * @var RegisterRequestConditions
      */
     private $conditions;
 
@@ -25,19 +27,19 @@ class RegisterQuery
      */
     private $offset = 0;
 
-    public function __construct(RegisterQueryResource $resource)
+    public function __construct(RegisterResource $resource)
     {
         $this->resource = $resource;
-        $this->conditions = new RegisterQueryConditions();
+        $this->conditions = new RegisterRequestConditions();
     }
 
-    public function addCondition(RegisterQueryCondition $condition): void
+    public function addCondition(RegisterRequestCondition $condition): void
     {
-        $this->conditions[] = $condition;
+        $this->conditions->add($condition);
     }
 
     /**
-     * @param RegisterQueryCondition[] $conditions
+     * @param RegisterRequestCondition[] $conditions
      */
     public function setConditions(array $conditions): void
     {
@@ -62,7 +64,7 @@ class RegisterQuery
     public function toArray(): array
     {
         $array = [
-            'resource' => $this->resource->getId(),
+            'resource_id' => $this->resource->getId(),
             'limit' => $this->limit,
             'offset' => $this->offset
         ];

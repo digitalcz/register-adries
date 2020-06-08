@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace DigitalCz\RegisterAdries\Query;
+namespace DigitalCz\RegisterAdries\Request;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
-class RegisterQueryConditionTest extends TestCase
+class RegisterRequestConditionTest extends TestCase
 {
     public function testCreate(): void
     {
-        $condition = new RegisterQueryCondition('foo', 'bar', RegisterQueryCondition::EQ);
+        $condition = new RegisterRequestCondition('foo', 'bar', RegisterRequestCondition::EQ);
         self::assertEquals('foo', $condition->getField());
         self::assertEquals('bar', $condition->getValue());
         self::assertTrue($condition->isEq());
     }
 
-    public function testCreateGt()
+    public function testCreateGt(): void
     {
-        $condition = new RegisterQueryCondition('moo', 'baz', RegisterQueryCondition::GT);
+        $condition = new RegisterRequestCondition('moo', 'baz', RegisterRequestCondition::GT);
         self::assertEquals('moo', $condition->getField());
         self::assertEquals('baz', $condition->getValue());
         self::assertFalse($condition->isEq());
@@ -28,6 +28,6 @@ class RegisterQueryConditionTest extends TestCase
     public function testInvalidOperator(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        new RegisterQueryCondition('foo', 'bar', '<>');
+        new RegisterRequestCondition('foo', 'bar', '<>');
     }
 }
