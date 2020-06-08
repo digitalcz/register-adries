@@ -4,7 +4,11 @@
     "description": "Provides communication with https://data.gov.sk/dataset/register-adries",
     "keywords": [
         "digitalcz",
-        "register-adries"
+        "register-adries",
+        "data.gov.sk",
+        "slovakia",
+        "kataster",
+        "php"
     ],
     "homepage": "https://github.com/digitalcz/register-adries",
     "license": "MIT",
