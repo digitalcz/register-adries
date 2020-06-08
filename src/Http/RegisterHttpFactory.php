@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Http;
 
-use DigitalCz\RegisterAdries\Query\RegisterQuery;
+use DigitalCz\RegisterAdries\Request\RegisterRequest;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
+use RuntimeException;
 
-class RegisterRequestFactory
+class RegisterHttpFactory implements RegisterHttpFactoryInterface
 {
     private const SEARCH_URI = 'https://data.gov.sk/api/action/datastore_search';
 
@@ -30,7 +31,7 @@ class RegisterRequestFactory
         $this->streamFactory = $streamFactory;
     }
 
-    public function create(RegisterQuery $query): RequestInterface
+    public function create(RegisterRequest $query): RequestInterface
     {
         return $this->requestFactory
             ->createRequest('POST', self::SEARCH_URI)
@@ -39,12 +40,12 @@ class RegisterRequestFactory
             ->withHeader('Content-Type', 'application/json');
     }
 
-    private function createBody(RegisterQuery $query): StreamInterface
+    private function createBody(RegisterRequest $query): StreamInterface
     {
         $content = json_encode($query->toArray());
 
         if ($content === false) {
-            throw new \RuntimeException('Json encoding failure');
+            throw new RuntimeException('Json encoding failure');
         }
 
         return $this->streamFactory->createStream($content);

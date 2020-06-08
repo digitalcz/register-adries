@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace DigitalCz\RegisterAdries\Query;
+namespace DigitalCz\RegisterAdries\Request;
 
 use InvalidArgumentException;
 
-class RegisterQueryCondition
+class RegisterRequestCondition
 {
     public const EQ = '=';
     public const GT = '>';

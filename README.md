@@ -7,21 +7,29 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Provides communication with https://data.gov.sk/dataset/register-adries
+Provides communication with https://data.gov.sk/dataset/register-adries in PHP via PSR-18 http client
 
 ## Install
 
 Via Composer
 
-``` bash
+```bash
 $ composer require digitalcz/register-adries
 ```
 
 ## Usage
 
-``` php
-$skeleton = new DigitalCz\RegisterAdries\Http();
-echo $skeleton->echoPhrase('Hello, League!');
+```php
+$register = new DigitalCz\RegisterAdries\RegisterAdries();
+
+$response = $register
+    ->request()   // creates RequestBuilder
+    ->regions()   // set resource to fetch
+    ->limit(5)    // max number of result (default 100)
+    ->offset(5)   // position of first result (default 0)
+    ->execute();  // executes the request and return results 
+
+$response->getRecords(); // array of DigitalCz\RegisterAdries\Response\Region
 ```
 
 ## Change log
@@ -32,6 +40,9 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ``` bash
 $ composer test
+$ composer phpstan
+$ composer cs       # codesniffer
+$ composer csfix    # code beautifier
 ```
 
 ## Contributing
