@@ -33,6 +33,15 @@ final class Response
         return $this->records;
     }
 
+    public function getSingleRecord(): ?Record
+    {
+        if (count($this->records) !== 1) {
+            return null;
+        }
+
+        return reset($this->records);
+    }
+
     /**
      * @return int|null
      */

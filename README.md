@@ -41,6 +41,11 @@ $register
     ->onlyValid()                       // adds condition `WHERE {now} > validFrom AND {now} < validTo`
 ```
 
+#### Requesting by objectId
+```php
+$region = $register->getRegion(9);      // returns DigitalCz\RegisterAdries\Response\Region or null
+```
+
 #### Available resources
  - region - https://data.gov.sk/dataset/register-adries-register-krajov
  - county - https://data.gov.sk/dataset/register-adries-register-okresov

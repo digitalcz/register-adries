@@ -4,10 +4,10 @@ All notable changes to `register-adries` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## NEXT - YYYY-MM-DD
+## [Unreleased]
 
 ### Added
-- Nothing
+- Add helper methods RegisterAdries::find*
 
 ### Deprecated
 - Nothing

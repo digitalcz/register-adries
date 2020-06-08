@@ -89,6 +89,11 @@ final class RegisterRequestBuilder
         return $this;
     }
 
+    public function whereObjectId(int $id): self
+    {
+        return $this->whereEq('objectId', $id);
+    }
+
     /**
      * @param mixed $value
      */
