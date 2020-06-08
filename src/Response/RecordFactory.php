@@ -6,7 +6,6 @@ namespace DigitalCz\RegisterAdries\Response;
 
 use DigitalCz\RegisterAdries\RegisterResource;
 use InvalidArgumentException;
-use PHPUnit\Framework\Constraint\Count;
 
 final class RecordFactory implements RecordFactoryInterface
 {

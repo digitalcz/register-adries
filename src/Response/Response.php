@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Response;
 
-use Psr\Http\Message\ResponseInterface;
-
 class Response
 {
     /**

@@ -6,10 +6,8 @@ namespace DigitalCz\RegisterAdries\Http;
 
 use DigitalCz\RegisterAdries\Request\RegisterRequest;
 use DigitalCz\RegisterAdries\Response\Response;
-use DigitalCz\RegisterAdries\Response\ResponseFactory;
 use DigitalCz\RegisterAdries\Response\ResponseFactoryInterface;
 use Psr\Http\Client\ClientInterface;
-use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
 class RegisterClient

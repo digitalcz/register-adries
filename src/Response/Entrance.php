@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace DigitalCz\RegisterAdries\Response;
 
 use DateTimeImmutable;
-use phpDocumentor\Reflection\Types\Nullable;
 
 final class Entrance extends Record
 {

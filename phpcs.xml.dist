@@ -13,4 +13,9 @@
     <arg value="s" />
 
     <rule ref="PSR12" />
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+        <properties>
+            <property name="searchAnnotations" value="true"/>
+        </properties>
+    </rule>
 </ruleset>

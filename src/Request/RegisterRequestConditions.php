@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Request;
 
-use ArrayObject;
-
 class RegisterRequestConditions
 {
     /**

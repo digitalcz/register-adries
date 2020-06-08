@@ -7,7 +7,6 @@ namespace DigitalCz\RegisterAdries\Request;
 use DigitalCz\RegisterAdries\Http\RegisterClient;
 use DigitalCz\RegisterAdries\RegisterResource;
 use DigitalCz\RegisterAdries\Response\Response;
-use Psr\Http\Message\ResponseInterface;
 
 class RegisterRequestBuilder
 {
