@@ -7,7 +7,7 @@ We accept contributions via Pull Requests on [Github](https://github.com/digital
 
 ## Pull Requests
 
-- **[PSR-22 Coding Standard](https://www.php-fig.org/psr/psr-12/)** - Check the code style with ``$ composer check-style`` and fix it with ``$ composer fix-style``.
+- **[PSR-12 Coding Standard](https://www.php-fig.org/psr/psr-12/)** - Check the code style with ``$ composer cs`` and fix it with ``$ composer csfix``.
 
 - **Add tests!** - Your patch won't be accepted if it doesn't have tests.
 
@@ -26,6 +26,7 @@ We accept contributions via Pull Requests on [Github](https://github.com/digital
 
 ``` bash
 $ composer test
+$ composer phpstan
 ```
 
 
