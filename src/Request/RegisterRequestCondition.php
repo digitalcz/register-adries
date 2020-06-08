@@ -15,6 +15,7 @@ final class RegisterRequestCondition
     public const LT = '<';
     public const GTE = '>=';
     public const LTE = '<=';
+    public const LIKE = 'LIKE';
 
     /**
      * @var string[]
@@ -24,7 +25,8 @@ final class RegisterRequestCondition
         self::GT,
         self::LT,
         self::GTE,
-        self::LTE
+        self::LTE,
+        self::LIKE,
     ];
 
     /**

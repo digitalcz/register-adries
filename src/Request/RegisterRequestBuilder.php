@@ -94,6 +94,21 @@ final class RegisterRequestBuilder
         return $this->whereEq('objectId', $id);
     }
 
+    public function whereStartsWith(string $field, string $text): self
+    {
+        return $this->whereLike($field, "$text%");
+    }
+
+    public function whereEndsWith(string $field, string $text): self
+    {
+        return $this->whereLike($field, "%$text");
+    }
+
+    public function wherePartial(string $field, string $text): self
+    {
+        return $this->whereLike($field, "%$text%");
+    }
+
     /**
      * @param mixed $value
      */
@@ -132,6 +147,14 @@ final class RegisterRequestBuilder
     public function whereEq(string $field, $value): self
     {
         return $this->where($field, $value, RegisterRequestCondition::EQ);
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public function whereLike(string $field, $value): self
+    {
+        return $this->where($field, $value, RegisterRequestCondition::LIKE);
     }
 
     /**

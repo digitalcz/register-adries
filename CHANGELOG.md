@@ -8,6 +8,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ### Added
 - Add helper methods RegisterAdries::find*
+- Add methods for LIKE conditions
 
 ### Deprecated
 - Nothing
