@@ -7,7 +7,7 @@ namespace DigitalCz\RegisterAdries\Response;
 final class Response
 {
     /**
-     * @var Region[]
+     * @var Record[]
      */
     private $records;
 
