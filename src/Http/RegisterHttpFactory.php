@@ -14,6 +14,7 @@ use RuntimeException;
 class RegisterHttpFactory implements RegisterHttpFactoryInterface
 {
     private const SEARCH_URI = 'https://data.gov.sk/api/action/datastore_search';
+    private const SEARCH_URI_SQL = 'https://data.gov.sk/api/action/datastore_search_sql';
 
     /**
      * @var RequestFactoryInterface
@@ -31,18 +32,41 @@ class RegisterHttpFactory implements RegisterHttpFactoryInterface
         $this->streamFactory = $streamFactory;
     }
 
-    public function create(RegisterRequest $query): RequestInterface
+    public function createSimpleRequest(RegisterRequest $request): RequestInterface
     {
         return $this->requestFactory
             ->createRequest('POST', self::SEARCH_URI)
-            ->withBody($this->createBody($query))
+            ->withBody($this->encodeBody($request->asArray()))
             ->withHeader('Accept', 'application/json')
             ->withHeader('Content-Type', 'application/json');
     }
 
-    private function createBody(RegisterRequest $query): StreamInterface
+    public function createSqlRequest(RegisterRequest $request): RequestInterface
     {
-        $content = json_encode($query->toArray());
+        $sql = $request->asSql();
+        return $this->requestFactory
+            ->createRequest('POST', self::SEARCH_URI_SQL)
+            ->withBody($this->encodeBody(['sql' => $sql]))
+            ->withHeader('Accept', 'application/json')
+            ->withHeader('Content-Type', 'application/json');
+    }
+
+    public function createSqlCountRequest(RegisterRequest $request): RequestInterface
+    {
+        $sql = $request->asSqlCount();
+        return $this->requestFactory
+            ->createRequest('POST', self::SEARCH_URI_SQL)
+            ->withBody($this->encodeBody(['sql' => $sql]))
+            ->withHeader('Accept', 'application/json')
+            ->withHeader('Content-Type', 'application/json');
+    }
+
+    /**
+     * @param array<mixed> $data
+     */
+    private function encodeBody(array $data): StreamInterface
+    {
+        $content = json_encode($data);
 
         if ($content === false) {
             throw new RuntimeException('Json encoding failure');

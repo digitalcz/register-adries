@@ -14,7 +14,7 @@ class RegisterRequestConditions
     /**
      * @return array<string, string>
      */
-    public function toArray(): array
+    public function asArray(): array
     {
         $array = [];
 
@@ -25,6 +25,18 @@ class RegisterRequestConditions
         return $array;
     }
 
+    public function asSql(): string
+    {
+        $conditionsSqls = array_map(
+            static function (RegisterRequestCondition $condition) {
+                return $condition->asSql();
+            },
+            $this->conditions
+        );
+
+        return implode(' AND ', $conditionsSqls);
+    }
+
     public function add(RegisterRequestCondition $condition): void
     {
         $this->conditions[] = $condition;
@@ -33,5 +45,16 @@ class RegisterRequestConditions
     public function count(): int
     {
         return count($this->conditions);
+    }
+
+    public function allEq(): bool
+    {
+        foreach ($this->conditions as $condition) {
+            if (!$condition->isEq()) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

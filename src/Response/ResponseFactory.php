@@ -21,21 +21,11 @@ final class ResponseFactory implements ResponseFactoryInterface
     /**
      * @param array<string, mixed> $result
      */
-    public function createResponse(array $result): Response
+    public function createResponse(RegisterResource $resource, array $result): Response
     {
-        $records = $this->createRecords($result);
+        $records = $this->recordFactory->createFromResults($resource, $result['records'] ?? []);
         $total = (int)($result['total'] ?? 0);
 
         return new Response($records, $total);
-    }
-
-    /**
-     * @param array<string, mixed> $result
-     * @return Record[]
-     */
-    private function createRecords(array $result): array
-    {
-        $resource = RegisterResource::fromId($result['resource_id'] ?? 'null');
-        return $this->recordFactory->createFromResults($resource, $result['records'] ?? []);
     }
 }

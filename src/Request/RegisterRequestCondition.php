@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Request;
 
+use DateTimeInterface;
 use InvalidArgumentException;
+use UnexpectedValueException;
 
 class RegisterRequestCondition
 {
@@ -40,9 +42,13 @@ class RegisterRequestCondition
      */
     private $value;
 
-    public function __construct(string $field, string $value, string $operator = self::EQ)
+    /**
+     * @param mixed $value
+     */
+    public function __construct(string $field, $value, string $operator = self::EQ)
     {
         $this->guardOperator($operator);
+        $value = $this->normalizeValue($value);
 
         $this->field = $field;
         $this->operator = $operator;
@@ -69,5 +75,31 @@ class RegisterRequestCondition
     public function isEq(): bool
     {
         return $this->operator === self::EQ;
+    }
+
+    public function asSql(): string
+    {
+        return sprintf(
+            '"%s" %s \'%s\'',
+            $this->field,
+            $this->operator,
+            $this->value
+        );
+    }
+
+    /**
+     * @param mixed $value
+     */
+    private function normalizeValue($value): string
+    {
+        if ($value instanceof DateTimeInterface) {
+            return $value->format('Y-m-d H:i:s');
+        }
+
+        if (is_scalar($value)) {
+            return (string)$value;
+        }
+
+        throw new UnexpectedValueException(sprintf('Unexpected type for value %s', gettype($value)));
     }
 }

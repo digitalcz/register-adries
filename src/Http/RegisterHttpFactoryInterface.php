@@ -9,5 +9,9 @@ use Psr\Http\Message\RequestInterface;
 
 interface RegisterHttpFactoryInterface
 {
-    public function create(RegisterRequest $query): RequestInterface;
+    public function createSimpleRequest(RegisterRequest $request): RequestInterface;
+
+    public function createSqlRequest(RegisterRequest $request): RequestInterface;
+
+    public function createSqlCountRequest(RegisterRequest $request): RequestInterface;
 }

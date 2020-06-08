@@ -8,6 +8,8 @@ use DigitalCz\RegisterAdries\Request\RegisterRequest;
 use DigitalCz\RegisterAdries\Response\Response;
 use DigitalCz\RegisterAdries\Response\ResponseFactoryInterface;
 use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
 class RegisterClient
@@ -37,27 +39,68 @@ class RegisterClient
         $this->responseFactory = $responseFactory;
     }
 
-    public function request(RegisterRequest $query): Response
+    public function request(RegisterRequest $request): Response
     {
-        $httpRequest = $this->httpFactory->create($query);
+        if ($request->isSimple()) {
+            return $this->simpleRequest($request);
+        }
+
+        return $this->sqlRequest($request);
+    }
+
+    private function simpleRequest(RegisterRequest $request): Response
+    {
+        $httpRequest = $this->httpFactory->createSimpleRequest($request);
+        $result = $this->sendHttpRequest($httpRequest);
+
+        return $this->responseFactory->createResponse($request->getResource(), $result);
+    }
+
+    private function sqlRequest(RegisterRequest $request): Response
+    {
+        $sqlHttpRequest = $this->httpFactory->createSqlRequest($request);
+        $result = $this->sendHttpRequest($sqlHttpRequest);
+
+        $sqlCountHttpRequest = $this->httpFactory->createSqlCountRequest($request);
+        $countResult = $this->sendHttpRequest($sqlCountHttpRequest);
+        $result['total']  = (int)($countResult['records'][0]['count'] ?? 0);
+
+        return $this->responseFactory->createResponse($request->getResource(), $result);
+    }
+
+    /**
+     * @return array<mixed>
+     */
+    private function sendHttpRequest(RequestInterface $httpRequest): array
+    {
         $httpResponse = $this->httpClient->sendRequest($httpRequest);
 
         if ($httpResponse->getStatusCode() !== 200) {
             throw new RuntimeException('Request failed');
         }
 
-        $contents = $httpResponse->getBody()->getContents();
+        return $this->parseBody($httpResponse);
+    }
 
-        $result = json_decode($contents, true);
+    /**
+     * @return array<mixed>
+     */
+    private function parseBody(ResponseInterface $httpResponse): array
+    {
+        $json = $httpResponse->getBody()->getContents();
 
-        if ($result === false) {
+        $body = json_decode($json, true);
+
+        if ($body === false) {
             throw new RuntimeException('Failed to parse result json');
         }
 
-        if (!isset($result['result']) || !is_array($result['result'])) {
-            throw new RuntimeException('Invalid result recieved');
+        $result = $body['result'];
+
+        if (!isset($result) || !is_array($result)) {
+            throw new RuntimeException('Invalid result received');
         }
 
-        return $this->responseFactory->createResponse($result['result']);
+        return $result;
     }
 }

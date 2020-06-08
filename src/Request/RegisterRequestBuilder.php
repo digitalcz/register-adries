@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Request;
 
+use DateTimeImmutable;
 use DigitalCz\RegisterAdries\Http\RegisterClient;
 use DigitalCz\RegisterAdries\RegisterResource;
 use DigitalCz\RegisterAdries\Response\Response;
@@ -78,6 +79,64 @@ class RegisterRequestBuilder
     public function entrances(): self
     {
         return $this->setResource(RegisterResource::createEntrance());
+    }
+
+    public function onlyValid(): self
+    {
+        $now = new DateTimeImmutable();
+        $this->whereLt('validFrom', $now);
+        $this->whereGte('validTo', $now);
+        return $this;
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public function whereLt(string $field, $value): self
+    {
+        return $this->where($field, $value, RegisterRequestCondition::LT);
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public function whereLte(string $field, $value): self
+    {
+        return $this->where($field, $value, RegisterRequestCondition::LTE);
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public function whereGt(string $field, $value): self
+    {
+        return $this->where($field, $value, RegisterRequestCondition::GT);
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public function whereGte(string $field, $value): self
+    {
+        return $this->where($field, $value, RegisterRequestCondition::GTE);
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public function whereEq(string $field, $value): self
+    {
+        return $this->where($field, $value, RegisterRequestCondition::EQ);
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public function where(string $field, $value, string $operator): self
+    {
+        $this->conditions[] = new RegisterRequestCondition($field, $value, $operator);
+
+        return $this;
     }
 
     public function limit(int $limit): self
