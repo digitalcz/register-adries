@@ -14,7 +14,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 ### Fixed
-- Nothing
+- Fix explode of array values
 
 ### Removed
 - Nothing
