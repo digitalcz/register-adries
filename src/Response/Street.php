@@ -36,8 +36,8 @@ final class Street extends Record
     {
         parent::__construct($record);
         $this->streetName = $this->stringOrNull($record['streetName'] ?? null);
-        $this->municipalityIdentifiers = $this->arrayOrNull($record['municipalityIdentifiers'] ?? null);
-        $this->districtIdentifiers = $this->arrayOrNull($record['districtIdentifiers'] ?? null);
+        $this->municipalityIdentifiers = $this->intArrayOrNull($record['municipalityIdentifiers'] ?? null);
+        $this->districtIdentifiers = $this->intArrayOrNull($record['districtIdentifiers'] ?? null);
     }
 
     /**

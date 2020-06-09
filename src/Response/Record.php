@@ -214,20 +214,20 @@ abstract class Record
 
     /**
      * @param mixed $value
-     * @return array<mixed>
+     * @return array<int>
      */
-    protected function arrayOrNull($value): ?array
+    protected function intArrayOrNull($value): ?array
     {
-        if (is_array($value)) {
-            return $value;
-        }
-
         if (is_string($value)) {
-            return explode(',', $value);
+            $value = explode(',', $value);
         }
 
         if (is_scalar($value)) {
-            return [$value];
+            $value = [$value];
+        }
+
+        if (is_array($value)) {
+            return array_map('intval', $value);
         }
 
         return null;

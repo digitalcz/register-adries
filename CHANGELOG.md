@@ -9,15 +9,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - Add helper methods RegisterAdries::find*
 - Add methods for LIKE conditions
-
-### Deprecated
-- Nothing
+- Add casting to int in array values
 
 ### Fixed
 - Fix explode of array values
-
-### Removed
-- Nothing
-
-### Security
-- Nothing
