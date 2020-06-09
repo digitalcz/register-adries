@@ -222,6 +222,10 @@ abstract class Record
             return $value;
         }
 
+        if (is_string($value)) {
+            return explode(',', $value);
+        }
+
         if (is_scalar($value)) {
             return [$value];
         }
