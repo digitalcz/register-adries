@@ -24,7 +24,7 @@ final class Building extends Record
     private $buildingName;
 
     /**
-     * atribút, nachádzajú sa v budove byty:
+     * Atribút, nachádzajú sa v budove byty:
      * true = v budove sa nachádzajú byty
      * false = v budove sa byty nenachádzajú
      * @var bool|null
