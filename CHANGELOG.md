@@ -6,6 +6,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 
+## [0.2.0] - 2020-06-09
+
 ### Added
 - Add helper methods RegisterAdries::find*
 - Add methods for LIKE conditions
