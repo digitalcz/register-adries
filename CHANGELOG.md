@@ -4,15 +4,11 @@ All notable changes to `register-adries` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [Unreleased]
+## [1.0.0] - 2020-06-10
 
 ### Added
-- Add test for RegisterClient
-- Add test for RegisterHttpFactory
-- Add test for RegisterRequest
-- Add test for RegisterRequestBuilder
-- Add test for RegisterRequestCondition
-- Add test for RegisterRequestConditions
+- Improve test coverage
+- Improve documentation
 
 ## [0.2.0] - 2020-06-09
 
