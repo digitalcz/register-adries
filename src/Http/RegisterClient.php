@@ -12,7 +12,7 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
-final class RegisterClient
+final class RegisterClient implements RegisterClientInterface
 {
     /**
      * @var ClientInterface

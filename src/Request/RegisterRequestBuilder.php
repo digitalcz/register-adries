@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace DigitalCz\RegisterAdries\Request;
 
 use DateTimeImmutable;
-use DigitalCz\RegisterAdries\Http\RegisterClient;
+use DigitalCz\RegisterAdries\Http\RegisterClientInterface;
 use DigitalCz\RegisterAdries\RegisterResource;
 use DigitalCz\RegisterAdries\Response\Response;
 
 final class RegisterRequestBuilder
 {
     /**
-     * @var RegisterClient
+     * @var RegisterClientInterface
      */
     private $client;
 
@@ -36,7 +36,7 @@ final class RegisterRequestBuilder
      */
     private $offset = 0;
 
-    public function __construct(RegisterClient $client)
+    public function __construct(RegisterClientInterface $client)
     {
         $this->client = $client;
     }

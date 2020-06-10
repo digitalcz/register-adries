@@ -10,6 +10,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add test for RegisterClient
 - Add test for RegisterHttpFactory
 - Add test for RegisterRequest
+- Add test for RegisterRequestBuilder
 
 ## [0.2.0] - 2020-06-09
 

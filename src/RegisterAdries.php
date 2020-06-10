@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\RegisterAdries;
 
 use DigitalCz\RegisterAdries\Http\RegisterClient;
+use DigitalCz\RegisterAdries\Http\RegisterClientInterface;
 use DigitalCz\RegisterAdries\Http\RegisterHttpFactory;
 use DigitalCz\RegisterAdries\Request\RegisterRequestBuilder;
 use DigitalCz\RegisterAdries\Response\Building;
@@ -26,7 +27,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 final class RegisterAdries
 {
     /**
-     * @var RegisterClient
+     * @var RegisterClientInterface
      */
     private $client;
 
