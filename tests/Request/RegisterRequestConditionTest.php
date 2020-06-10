@@ -4,9 +4,16 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Request;
 
+use DateTimeImmutable;
+use Generator;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use stdClass;
+use UnexpectedValueException;
 
+/**
+ * @covers \DigitalCz\RegisterAdries\Request\RegisterRequestCondition
+ */
 class RegisterRequestConditionTest extends TestCase
 {
     public function testCreate(): void
@@ -14,6 +21,7 @@ class RegisterRequestConditionTest extends TestCase
         $condition = new RegisterRequestCondition('foo', 'bar', RegisterRequestCondition::EQ);
         self::assertEquals('foo', $condition->getField());
         self::assertEquals('bar', $condition->getValue());
+
         self::assertTrue($condition->isEq());
     }
 
@@ -29,5 +37,39 @@ class RegisterRequestConditionTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         new RegisterRequestCondition('foo', 'bar', '<>');
+    }
+
+    public function testNormalizeDateTime(): void
+    {
+        $date = new DateTimeImmutable();
+        $condition = new RegisterRequestCondition('foo', $date);
+        self::assertEquals($date->format('Y-m-d H:i:s'), $condition->getValue());
+    }
+
+    public function testNormalizeFail(): void
+    {
+        $obj = new stdClass();
+        $this->expectException(UnexpectedValueException::class);
+        $this->expectExceptionMessage('Unexpected type for value object');
+        new RegisterRequestCondition('foo', $obj);
+    }
+
+    /**
+     * @dataProvider provideAsSql
+     */
+    public function testAsSql(string $field, $value, string $operator, string $expected): void
+    {
+        $condition = new RegisterRequestCondition($field, $value, $operator);
+        self::assertEquals($expected, $condition->asSql());
+    }
+
+    public function provideAsSql(): ?Generator
+    {
+        yield ['foo', 'baz', RegisterRequestCondition::LIKE, '"foo" LIKE \'baz\''];
+        yield ['foo', 'baz', RegisterRequestCondition::LT, '"foo" < \'baz\''];
+        yield ['foo', 'baz', RegisterRequestCondition::LTE, '"foo" <= \'baz\''];
+        yield ['foo', 'baz', RegisterRequestCondition::GT, '"foo" > \'baz\''];
+        yield ['foo', 'baz', RegisterRequestCondition::GTE, '"foo" >= \'baz\''];
+        yield ['foo', 'baz', RegisterRequestCondition::EQ, '"foo" = \'baz\''];
     }
 }
