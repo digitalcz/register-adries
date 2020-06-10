@@ -24,7 +24,7 @@ final class RecordFactory implements RecordFactoryInterface
     ];
 
     /**
-     * @param array<string, mixed> $results
+     * @param array<int, array<string, mixed>> $results
      * @return Record[]
      */
     public function createFromResults(RegisterResource $resource, array $results): array
@@ -43,11 +43,7 @@ final class RecordFactory implements RecordFactoryInterface
     {
         if (!array_key_exists($resource->getName(), self::$resourceToRecordClassMap)) {
             throw new InvalidArgumentException(
-                sprintf(
-                    'Non-implemented resource %s on %s',
-                    $resource->getName(),
-                    __CLASS__
-                )
+                sprintf('Non-implemented resource %s on %s', $resource->getName(), __CLASS__)
             );
         }
 

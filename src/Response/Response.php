@@ -17,7 +17,7 @@ final class Response
     private $total;
 
     /**
-     * @param array<string, mixed> $records
+     * @param array<int, Record> $records
      */
     public function __construct(array $records, int $total)
     {

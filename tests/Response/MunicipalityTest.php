@@ -6,6 +6,9 @@ namespace DigitalCz\RegisterAdries\Response;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \DigitalCz\RegisterAdries\Response\Municipality
+ */
 class MunicipalityTest extends TestCase
 {
     public function testConstruct(): void

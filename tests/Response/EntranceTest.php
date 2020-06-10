@@ -7,6 +7,9 @@ namespace DigitalCz\RegisterAdries\Response;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \DigitalCz\RegisterAdries\Response\Entrance
+ */
 class EntranceTest extends TestCase
 {
     public function testConstruct(): void

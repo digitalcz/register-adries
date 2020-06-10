@@ -6,6 +6,9 @@ namespace DigitalCz\RegisterAdries\Request;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \DigitalCz\RegisterAdries\Request\RegisterRequestConditions
+ */
 class RegisterRequestConditionsTest extends TestCase
 {
     public function testAsArray(): void
