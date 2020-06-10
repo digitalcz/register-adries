@@ -7,7 +7,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Provides communication with https://data.gov.sk/dataset/register-adries in PHP via PSR-18 http client
+Provides communication with https://data.gov.sk/dataset/register-adries in PHP OOP via PSR-18 HTTP client
 
 ## Install
 
@@ -23,9 +23,11 @@ $ composer require digitalcz/register-adries
 $register = new DigitalCz\RegisterAdries\RegisterAdries();
 
 $response = $register
-    ->request()             // creates RequestBuilder
+    ->request()             // create RequestBuilder
     ->regions()             // set resource to fetch
-    ->execute();            // executes the request and return results 
+    ->limit(5)              // limit number of results
+    ->offset(10)            // offset first result
+    ->execute();            // execute the request and return response 
 
 $response->getRecords();    // DigitalCz\RegisterAdries\Response\Region[]
 $response->getTotal();      // total number of results
@@ -34,16 +36,37 @@ $response->getTotal();      // total number of results
 #### With conditions
 
 ```php
+$register = new DigitalCz\RegisterAdries\RegisterAdries();
+
 $register
-    // ...
-    ->whereEq('countyName', 'Košice')   // adds condition `countyName = Košice`
-    ->whereGt('versionId', 40)          // adds condition `versionId > 40` 
-    ->onlyValid()                       // adds condition `WHERE {now} > validFrom AND {now} < validTo`
+    ->request()                         // create RequestBuilder
+    // comparison
+    ->whereEq('foo', 'bar')             // `foo = bar`
+    ->whereGt('foo', 40)                // `foo > 40` 
+    ->whereGte('foo', 40)               // `foo >= 40` 
+    ->whereLt('foo', 40)                // `foo < 40` 
+    ->whereLte('foo', 40)               // `foo <= 40` 
+    // like
+    ->whereLike('foo', 'bar')           // `foo LIKE bar`
+    ->whereStartsWith('foo', 'bar')     // `foo LIKE bar%`
+    ->whereEndsWith('foo', 'bar')       // `foo LIKE %bar`
+    ->wherePartial('foo', 'bar')        // `foo LIKE %bar%`
+    // helpers
+    ->whereObjectId(12)                 // `objectId = 12`
+    ->onlyValid();                      // `WHERE {now} > validFrom AND {now} < validTo`
 ```
 
 #### Requesting by objectId
 ```php
-$region = $register->getRegion(9);      // returns DigitalCz\RegisterAdries\Response\Region or null
+$register = new DigitalCz\RegisterAdries\RegisterAdries();
+$register->findRegion(9);           // returns DigitalCz\RegisterAdries\Response\Region or null
+$register->findCounty(9);           // returns DigitalCz\RegisterAdries\Response\County or null
+$register->findMunicipality(9);     // returns DigitalCz\RegisterAdries\Response\Municipality or null
+$register->findDistrict(9);         // returns DigitalCz\RegisterAdries\Response\District or null
+$register->findStreet(9);           // returns DigitalCz\RegisterAdries\Response\Street or null
+$register->findUnit(9);             // returns DigitalCz\RegisterAdries\Response\Unit or null
+$register->findBuilding(9);         // returns DigitalCz\RegisterAdries\Response\Building or null
+$register->findEntrance(9);         // returns DigitalCz\RegisterAdries\Response\Entrance or null
 ```
 
 #### Available resources
@@ -67,7 +90,7 @@ $register
     ->streets()
     ->units()
     ->buildings()
-    ->entrances()
+    ->entrances();
 // It isn't possible to chain more resources, this is just example
 ```
 
@@ -92,9 +115,9 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Testing
 
 ``` bash
-$ composer test
+$ composer tests
 $ composer phpstan
-$ composer cs       # codesniffer
+$ composer cs       # code sniffer
 $ composer csfix    # code beautifier
 ```
 

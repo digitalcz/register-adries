@@ -1,7 +1,7 @@
 {
     "name": "digitalcz/register-adries",
     "type": "library",
-    "description": "Provides communication with https://data.gov.sk/dataset/register-adries",
+    "description": "Provides communication with https://data.gov.sk/dataset/register-adries in PHP OOP via PSR-18 HTTP client",
     "keywords": [
         "digitalcz",
         "register-adries",
@@ -49,7 +49,7 @@
         }
     },
     "scripts": {
-        "test": "phpunit",
+        "tests": "phpunit",
         "phpstan": "phpstan analyse",
         "cs": "phpcs",
         "csfix": "phpcbf"
