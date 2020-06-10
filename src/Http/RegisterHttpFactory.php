@@ -66,7 +66,7 @@ final class RegisterHttpFactory implements RegisterHttpFactoryInterface
     {
         $content = json_encode($data);
 
-        if ($content === false) {
+        if (!is_string($content)) {
             throw new RuntimeException('Json encoding failure');
         }
 
