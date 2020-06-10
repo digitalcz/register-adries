@@ -43,17 +43,6 @@ final class RegisterResource
         $this->resource = $resource;
     }
 
-    public static function fromId(string $resourceId): self
-    {
-        $resource = array_search($resourceId, self::$ids, true);
-
-        if ($resource === false) {
-            throw new InvalidArgumentException('Unknown resource id ' . $resourceId);
-        }
-
-        return new self($resource);
-    }
-
     public static function createRegion(): self
     {
         return new self(self::REGION);

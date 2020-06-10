@@ -1,9 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DigitalCz\RegisterAdries\Request;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \DigitalCz\RegisterAdries\Request\RegisterRequestConditions
+ */
 class RegisterRequestConditionsTest extends TestCase
 {
     public function testAsArray(): void
