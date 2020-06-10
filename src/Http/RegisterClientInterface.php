@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DigitalCz\RegisterAdries\Http;
 
 use DigitalCz\RegisterAdries\Request\RegisterRequest;
