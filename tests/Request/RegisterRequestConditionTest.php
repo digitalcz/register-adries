@@ -55,6 +55,7 @@ class RegisterRequestConditionTest extends TestCase
     }
 
     /**
+     * @param mixed $value
      * @dataProvider provideAsSql
      */
     public function testAsSql(string $field, $value, string $operator, string $expected): void
@@ -63,7 +64,10 @@ class RegisterRequestConditionTest extends TestCase
         self::assertEquals($expected, $condition->asSql());
     }
 
-    public function provideAsSql(): ?Generator
+    /**
+     * @return Generator<array<string>>
+     */
+    public function provideAsSql(): Generator
     {
         yield ['foo', 'baz', RegisterRequestCondition::LIKE, '"foo" LIKE \'baz\''];
         yield ['foo', 'baz', RegisterRequestCondition::LT, '"foo" < \'baz\''];
