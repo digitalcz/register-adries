@@ -91,15 +91,13 @@ final class RegisterClient
      */
     private function parseBody(ResponseInterface $httpResponse): array
     {
-        $json = $httpResponse->getBody()->getContents();
+        $body = json_decode((string)$httpResponse->getBody(), true);
 
-        $body = json_decode($json, true);
-
-        if ($body === false) {
-            throw new RuntimeException('Failed to parse result json');
+        if (!is_array($body)) {
+            throw new RuntimeException('Failed to parse api result');
         }
 
-        $result = $body['result'];
+        $result = $body['result'] ?? null;
 
         if (!isset($result) || !is_array($result)) {
             throw new RuntimeException('Invalid result received');

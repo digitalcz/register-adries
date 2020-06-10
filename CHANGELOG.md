@@ -6,6 +6,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 
+### Added
+- Add tests for RegisterClient
+
 ## [0.2.0] - 2020-06-09
 
 ### Added
