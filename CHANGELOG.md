@@ -4,6 +4,11 @@ All notable changes to `register-adries` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [Unreleased]
+
+### Added
+- Add property description for Municipality
+
 ## [1.0.0] - 2020-06-10
 
 ### Added
