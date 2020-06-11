@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Http;
 
+use DigitalCz\RegisterAdries\Exception\RequestException;
 use DigitalCz\RegisterAdries\Request\RegisterRequest;
 use DigitalCz\RegisterAdries\Response\Response;
 use DigitalCz\RegisterAdries\Response\ResponseFactoryInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use RuntimeException;
 
 final class RegisterClient implements RegisterClientInterface
 {
@@ -80,7 +80,7 @@ final class RegisterClient implements RegisterClientInterface
         $httpResponse = $this->httpClient->sendRequest($httpRequest);
 
         if ($httpResponse->getStatusCode() !== 200) {
-            throw new RuntimeException('Request failed');
+            throw RequestException::requestFailed($httpResponse);
         }
 
         return $this->parseBody($httpResponse);
@@ -93,14 +93,14 @@ final class RegisterClient implements RegisterClientInterface
     {
         $body = json_decode((string)$httpResponse->getBody(), true);
 
-        if (!is_array($body)) {
-            throw new RuntimeException('Failed to parse api result');
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw RequestException::invalidResponse(json_last_error_msg());
         }
 
         $result = $body['result'] ?? null;
 
         if (!isset($result) || !is_array($result)) {
-            throw new RuntimeException('Invalid result received');
+            throw RequestException::invalidResponse('No result key');
         }
 
         return $result;

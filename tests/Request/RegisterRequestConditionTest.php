@@ -9,7 +9,6 @@ use Generator;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use stdClass;
-use UnexpectedValueException;
 
 /**
  * @covers \DigitalCz\RegisterAdries\Request\RegisterRequestCondition
@@ -36,6 +35,7 @@ class RegisterRequestConditionTest extends TestCase
     public function testInvalidOperator(): void
     {
         $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid operator, allowed operators are [=,>,<,>=,<=,LIKE]');
         new RegisterRequestCondition('foo', 'bar', '<>');
     }
 
@@ -49,8 +49,8 @@ class RegisterRequestConditionTest extends TestCase
     public function testNormalizeFail(): void
     {
         $obj = new stdClass();
-        $this->expectException(UnexpectedValueException::class);
-        $this->expectExceptionMessage('Unexpected type for value object');
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Cannot normalize value of type object');
         new RegisterRequestCondition('foo', $obj);
     }
 
