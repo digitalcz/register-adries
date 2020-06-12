@@ -127,7 +127,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Security
 
-If you discover any security related issues, please email info@digital.cz instead of using the issue tracker.
+If you discover any security related issues, please email devs@digital.cz instead of using the issue tracker.
 
 ## Credits
 
