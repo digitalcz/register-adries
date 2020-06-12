@@ -17,7 +17,7 @@ class ResponseTest extends TestCase
             [
                 new Region([]),
                 new Region([]),
-                new Region([])
+                new Region([]),
             ],
             77
         );

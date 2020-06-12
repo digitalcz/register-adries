@@ -24,12 +24,12 @@ class RegisterRequestTest extends TestCase
         self::assertEquals(
             [
                 'resource_id' => $request->getResource()->getId(),
-                'limit' => 10,
-                'offset' => 5,
-                'filters' => [
+                'limit'       => 10,
+                'offset'      => 5,
+                'filters'     => [
                     'foo' => 'bar',
                     'moo' => 'baz',
-                ]
+                ],
             ],
             $request->asArray()
         );

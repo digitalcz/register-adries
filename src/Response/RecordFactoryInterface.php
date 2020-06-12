@@ -10,6 +10,7 @@ interface RecordFactoryInterface
 {
     /**
      * @param array<int, array<string, mixed>> $results
+     *
      * @return Record[]
      */
     public function createFromResults(RegisterResource $resource, array $results): array;

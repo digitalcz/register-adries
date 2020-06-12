@@ -14,10 +14,10 @@ class DistrictTest extends TestCase
     public function testConstruct(): void
     {
         $record = [
-            'uniqueNumbering' => true,
-            'districtCode' => '234',
-            'districtName' => 'Foo',
-            'municipalityIdentifier' => '123'
+            'uniqueNumbering'        => true,
+            'districtCode'           => '234',
+            'districtName'           => 'Foo',
+            'municipalityIdentifier' => '123',
         ];
 
         $district = new District($record);

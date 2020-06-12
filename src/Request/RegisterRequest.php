@@ -70,8 +70,8 @@ final class RegisterRequest
     {
         $array = [
             'resource_id' => $this->resource->getId(),
-            'limit' => $this->limit,
-            'offset' => $this->offset
+            'limit'       => $this->limit,
+            'offset'      => $this->offset,
         ];
 
         if ($this->conditions->count() > 0) {

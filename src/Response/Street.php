@@ -12,19 +12,22 @@ namespace DigitalCz\RegisterAdries\Response;
 final class Street extends Record
 {
     /**
-     * Názov
+     * Názov.
+     *
      * @var string|null
      */
     private $streetName;
 
     /**
-     * Buď identifikátor obce alebo identifikátory mestských častí, cez ktoré ulica prechádza
+     * Buď identifikátor obce alebo identifikátory mestských častí, cez ktoré ulica prechádza.
+     *
      * @var int[]|null
      */
     private $municipalityIdentifiers;
 
     /**
-     * Zoznam identifikátorov častí obce, cez ktoré ulica prechádza
+     * Zoznam identifikátorov častí obce, cez ktoré ulica prechádza.
+     *
      * @var int[]|null
      */
     private $districtIdentifiers;

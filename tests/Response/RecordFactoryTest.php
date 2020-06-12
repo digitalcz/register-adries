@@ -19,7 +19,7 @@ class RecordFactoryTest extends TestCase
             RegisterResource::createRegion(),
             [
                 ['objectId' => 69],
-                ['objectId' => 420]
+                ['objectId' => 420],
             ]
         );
 

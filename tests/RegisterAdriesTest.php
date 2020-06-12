@@ -35,16 +35,16 @@ class RegisterAdriesTest extends TestCase
         $request = $this->httpClient->getLastRequest();
         self::assertEquals(
             'https://data.gov.sk/api/action/datastore_search',
-            (string)$request->getUri()
+            (string) $request->getUri()
         );
-        self::assertJson((string)$request->getBody());
+        self::assertJson((string) $request->getBody());
         self::assertJsonStringEqualsJsonString(
             sprintf(
-                "{\"resource_id\":\"%s\",\"limit\":1,\"offset\":0,\"filters\":{\"objectId\":\"%s\"}}",
+                '{"resource_id":"%s","limit":1,"offset":0,"filters":{"objectId":"%s"}}',
                 $resource->getId(),
                 $id
             ),
-            (string)$request->getBody()
+            (string) $request->getBody()
         );
     }
 
@@ -71,7 +71,7 @@ class RegisterAdriesTest extends TestCase
             ->willReturn(200);
         $response
             ->method('getBody')
-            ->willReturn(file_get_contents(__DIR__ . '/Dummy/Responses/regions.yaml'));
+            ->willReturn(file_get_contents(__DIR__.'/Dummy/Responses/regions.yaml'));
 
         $this->httpClient = new Client();
         $this->httpClient->addResponse($response);

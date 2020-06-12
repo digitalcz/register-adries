@@ -14,13 +14,15 @@ use DateTimeImmutable;
 final class Entrance extends Record
 {
     /**
-     * Orientačné číslo vchodu
+     * Orientačné číslo vchodu.
+     *
      * @var string|null
      */
     private $buildingNumber;
 
     /**
-     * Identifikátor adresy
+     * Identifikátor adresy.
+     *
      * @var string|null
      */
     private $buildingIndex;
@@ -31,31 +33,36 @@ final class Entrance extends Record
     private $postalCode;
 
     /**
-     * Súradnice zemepisnej šírky (ETRS89)
+     * Súradnice zemepisnej šírky (ETRS89).
+     *
      * @var string|null
      */
     private $axisB;
 
     /**
-     * Súradnice zemepisnej dĺžky (ETRS89)
+     * Súradnice zemepisnej dĺžky (ETRS89).
+     *
      * @var string|null
      */
     private $axisL;
 
     /**
-     * Identifikátor budovy (PropertyRegistrationNumber/objectId)
+     * Identifikátor budovy (PropertyRegistrationNumber/objectId).
+     *
      * @var int|null
      */
     private $propertyRegistrationNumberIdentifier;
 
     /**
-     * Identifikátor (StreetName/objectId) ulice
+     * Identifikátor (StreetName/objectId) ulice.
+     *
      * @var int|null
      */
     private $streetNameIdentifier;
 
     /**
-     * Dátum a čas verifikovania adresy
+     * Dátum a čas verifikovania adresy.
+     *
      * @var DateTimeImmutable|null
      */
     private $verifiedAt;

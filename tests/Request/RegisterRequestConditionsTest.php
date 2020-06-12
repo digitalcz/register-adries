@@ -20,7 +20,7 @@ class RegisterRequestConditionsTest extends TestCase
         self::assertEquals(
             [
                 'foo' => 'bar',
-                'baz' => 'moo'
+                'baz' => 'moo',
             ],
             $conditions->asArray()
         );

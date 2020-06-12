@@ -10,7 +10,7 @@ class RequestException extends RuntimeException
 {
     public static function requestFailed(ResponseInterface $httpResponse): self
     {
-        $bodyContents = (string)$httpResponse->getBody();
+        $bodyContents = (string) $httpResponse->getBody();
         $parsedBody = json_decode($bodyContents, true);
 
         if (json_last_error() === JSON_ERROR_NONE) {

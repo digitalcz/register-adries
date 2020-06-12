@@ -24,7 +24,7 @@ final class ResponseFactory implements ResponseFactoryInterface
     public function createResponse(RegisterResource $resource, array $result): Response
     {
         $records = $this->recordFactory->createFromResults($resource, $result['records'] ?? []);
-        $total = (int)($result['total'] ?? 0);
+        $total = (int) ($result['total'] ?? 0);
 
         return new Response($records, $total);
     }

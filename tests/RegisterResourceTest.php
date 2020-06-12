@@ -14,7 +14,7 @@ class RegisterResourceTest extends TestCase
      */
     public function testCreate(string $name, string $id): void
     {
-        $createMethod = 'create' . ucfirst($name);
+        $createMethod = 'create'.ucfirst($name);
         $resource = RegisterResource::$createMethod();
         self::assertEquals($name, $resource->getName());
         self::assertEquals($id, $resource->getId());

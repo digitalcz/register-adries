@@ -20,9 +20,9 @@ class ResponseFactoryTest extends TestCase
             [
                 'records' => [
                     ['objectId' => 22],
-                    ['objectId' => 33]
+                    ['objectId' => 33],
                 ],
-                'total' => 20
+                'total' => 20,
             ]
         );
 

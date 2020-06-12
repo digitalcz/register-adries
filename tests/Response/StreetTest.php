@@ -14,15 +14,15 @@ class StreetTest extends TestCase
     public function testConstruct(): void
     {
         $record = [
-            'streetName' => 'foo',
+            'streetName'              => 'foo',
             'municipalityIdentifiers' => '11,22,33',
-            'districtIdentifiers' => '123',
+            'districtIdentifiers'     => '123',
         ];
 
         $street = new Street($record);
 
         self::assertSame('foo', $street->getStreetName());
-        self::assertSame([11,22,33], $street->getMunicipalityIdentifiers());
+        self::assertSame([11, 22, 33], $street->getMunicipalityIdentifiers());
         self::assertSame([123], $street->getDistrictIdentifiers());
     }
 }

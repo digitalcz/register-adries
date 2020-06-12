@@ -86,6 +86,7 @@ final class RegisterRequestBuilder
         $now = new DateTimeImmutable();
         $this->whereLt('validFrom', $now);
         $this->whereGte('validTo', $now);
+
         return $this;
     }
 

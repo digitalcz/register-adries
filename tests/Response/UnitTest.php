@@ -14,8 +14,8 @@ class UnitTest extends TestCase
     public function testConstruct(): void
     {
         $record = [
-            'unitNumber' => 'foo',
-            'floor' => '4',
+            'unitNumber'               => 'foo',
+            'floor'                    => '4',
             'buildingNumberIdentifier' => '333',
         ];
 

@@ -12,13 +12,15 @@ namespace DigitalCz\RegisterAdries\Response;
 final class Building extends Record
 {
     /**
-     * Súpisné číslo
+     * Súpisné číslo.
+     *
      * @var int|null
      */
     private $propertyRegistrationNumber;
 
     /**
-     * Bližšie určenie miesta v rámci budovy, uvádza sa iba hodnota "byt"
+     * Bližšie určenie miesta v rámci budovy, uvádza sa iba hodnota "byt".
+     *
      * @var string|null
      */
     private $buildingName;
@@ -26,55 +28,64 @@ final class Building extends Record
     /**
      * Atribút, nachádzajú sa v budove byty:
      * true = v budove sa nachádzajú byty
-     * false = v budove sa byty nenachádzajú
+     * false = v budove sa byty nenachádzajú.
+     *
      * @var bool|null
      */
     private $containsFlats;
 
     /**
      * Identifikátor číselníka Účel budovy. Vždy CL010142.
+     *
      * @var string|null
      */
     private $buildingPurposeCodelistCode;
 
     /**
-     * Údaje o spôsobe využívania budovy, účel budovy, kód podľa číselníka CL010142
+     * Údaje o spôsobe využívania budovy, účel budovy, kód podľa číselníka CL010142.
+     *
      * @var string|null
      */
     private $buildingPurposeCode;
 
     /**
-     * Účel budovy, názov podľa príslušného kódu podľa číselníka CL010142
+     * Účel budovy, názov podľa príslušného kódu podľa číselníka CL010142.
+     *
      * @var string|null
      */
     private $buildingPurposeName;
 
     /**
      * Identifikátor číselníka Druhov stavieb (budov). Vždy CL010143.
+     *
      * @var string|null
      */
     private $buildingTypeCodelistCode;
 
     /**
-     * Druh stavby, názov podľa príslušného kódu podľa číselníka CL010143
+     * Druh stavby, názov podľa príslušného kódu podľa číselníka CL010143.
+     *
      * @var string|null
      */
     private $buildingTypeName;
 
     /**
-     * Kód druhu stavby (budovy) podľa číselníka CL010143
+     * Kód druhu stavby (budovy) podľa číselníka CL010143.
+     *
      * @var int|null
      */
     private $buildingTypeCode;
 
     /**
-     * Identifikátor (Municipality/objectId) nadradenej obce
+     * Identifikátor (Municipality/objectId) nadradenej obce.
+     *
      * @var int|null
      */
     private $municipalityIdentifier;
 
     /**
-     * Identifikátor (District/objectId) nadradenej časti obce
+     * Identifikátor (District/objectId) nadradenej časti obce.
+     *
      * @var int|null
      */
     private $districtIdentifier;

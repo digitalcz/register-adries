@@ -15,14 +15,14 @@ class EntranceTest extends TestCase
     public function testConstruct(): void
     {
         $record = [
-            'buildingNumber' => 'A112',
-            'buildingIndex' => 'foo',
-            'postalCode' => '44353',
-            'axisB' => '53.343894983',
-            'axisL' => '55.334343224',
+            'buildingNumber'                       => 'A112',
+            'buildingIndex'                        => 'foo',
+            'postalCode'                           => '44353',
+            'axisB'                                => '53.343894983',
+            'axisL'                                => '55.334343224',
             'propertyRegistrationNumberIdentifier' => 69,
-            'streetNameIdentifier' => 420,
-            'verifiedAt' => '2016-12-12'
+            'streetNameIdentifier'                 => 420,
+            'verifiedAt'                           => '2016-12-12',
         ];
 
         $entrance = new Entrance($record);

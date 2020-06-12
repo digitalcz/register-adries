@@ -31,7 +31,7 @@ class RegisterClientTest extends TestCase
             ->willReturn(200);
         $httpResponse
             ->method('getBody')
-            ->willReturn(file_get_contents(__DIR__ . '/../Dummy/Responses/regions.yaml'));
+            ->willReturn(file_get_contents(__DIR__.'/../Dummy/Responses/regions.yaml'));
         $httpClient->addResponse($httpResponse);
 
         $registerHttpFactory = new RegisterHttpFactory(
@@ -58,7 +58,7 @@ class RegisterClientTest extends TestCase
         // sql Request
         $httpResponse = $this->createMock(ResponseInterface::class);
         $httpResponse->method('getStatusCode')->willReturn(200);
-        $httpResponse->method('getBody')->willReturn(file_get_contents(__DIR__ . '/../Dummy/Responses/regions.yaml'));
+        $httpResponse->method('getBody')->willReturn(file_get_contents(__DIR__.'/../Dummy/Responses/regions.yaml'));
         $httpClient->addResponse($httpResponse);
 
         // count request

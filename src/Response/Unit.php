@@ -12,19 +12,22 @@ namespace DigitalCz\RegisterAdries\Response;
 final class Unit extends Record
 {
     /**
-     * Číslo bytu
+     * Číslo bytu.
+     *
      * @var string|null
      */
     private $unitNumber;
 
     /**
-     * Podlažie
+     * Podlažie.
+     *
      * @var int|null
      */
     private $floor;
 
     /**
-     * Identifikátor vchodu (orientačného čísla)
+     * Identifikátor vchodu (orientačného čísla).
+     *
      * @var int|null
      */
     private $buildingNumberIdentifier;

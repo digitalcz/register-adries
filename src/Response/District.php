@@ -14,26 +14,29 @@ final class District extends Record
     /**
      * Atribút pre jedinečné číslovanie budov v časti obce:
      * true = jedinečné číslovanie
-     * false = bez jedinečného číslovania
+     * false = bez jedinečného číslovania.
      *
      * @var bool|null
      */
     private $uniqueNumbering;
 
     /**
-     * Údaj o časti obce, obvykle zodpovedá kódu v číselníku CL010141
+     * Údaj o časti obce, obvykle zodpovedá kódu v číselníku CL010141.
+     *
      * @var int|null
      */
     private $districtCode;
 
     /**
-     * Časť názov obce
+     * Časť názov obce.
+     *
      * @var string|null
      */
     private $districtName;
 
     /**
-     * Identifikátor (Municipality/objectId) nadradenej obce
+     * Identifikátor (Municipality/objectId) nadradenej obce.
+     *
      * @var int|null
      */
     private $municipalityIdentifier;

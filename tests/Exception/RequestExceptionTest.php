@@ -11,7 +11,7 @@ class RequestExceptionTest extends TestCase
     {
         $response = new Response(409, [], json_encode([
             'success' => false,
-            'error' => ['__type' => 'Validation Error']
+            'error'   => ['__type' => 'Validation Error'],
         ]));
         $exception = RequestException::requestFailed($response);
         self::assertEquals(409, $exception->getCode());

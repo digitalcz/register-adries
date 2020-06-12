@@ -13,32 +13,37 @@ namespace DigitalCz\RegisterAdries\Response;
 final class Municipality extends Record
 {
     /**
-     * Údaj o obci, obvykle zodpovedá kódu v číselníku CL000025
+     * Údaj o obci, obvykle zodpovedá kódu v číselníku CL000025.
+     *
      * @var string|null
      */
     private $municipalityCode;
 
     /**
-     * Názov obce
+     * Názov obce.
+     *
      * @var string|null
      */
     private $municipalityName;
 
     /**
-     * Identifikátor (County/objectId) nadradeného okresu
+     * Identifikátor (County/objectId) nadradeného okresu.
+     *
      * @var int|null
      */
     private $countyIdentifier;
 
     /**
-     * Štatút obce
+     * Štatút obce.
+     *
      * @var string|null
      */
     private $status;
 
     /**
      * Identifikátor (Municipality/objectId) nadradeného mesta pre mestskú časť;
-     * položka je vyplnená ak je status == MESTSKA_CAST
+     * položka je vyplnená ak je status == MESTSKA_CAST.
+     *
      * @var int|null
      */
     private $cityIdentifier;

@@ -101,7 +101,7 @@ final class RegisterRequestCondition
         }
 
         if (is_scalar($value)) {
-            return (string)$value;
+            return (string) $value;
         }
 
         throw new InvalidArgumentException(sprintf('Cannot normalize value of type %s', gettype($value)));

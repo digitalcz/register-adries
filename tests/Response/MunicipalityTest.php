@@ -17,8 +17,8 @@ class MunicipalityTest extends TestCase
             'municipalityCode' => 'foo',
             'municipalityName' => 'bar',
             'countyIdentifier' => '123',
-            'status' => 'baz',
-            'cityIdentifier' => '777',
+            'status'           => 'baz',
+            'cityIdentifier'   => '777',
         ];
 
         $municipality = new Municipality($record);

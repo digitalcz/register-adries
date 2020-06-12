@@ -10,66 +10,77 @@ abstract class Record
 {
     /**
      * Technický identifikátor riadku vygenerovaný automaticky v MODe.
+     *
      * @var int|null
      */
     protected $id;
 
     /**
-     * Identifikátor zmeny
+     * Identifikátor zmeny.
+     *
      * @var int|null
      */
     protected $changeId;
 
     /**
-     * Dátumčas vykonania zmeny v referenčnom systéme (t.j. Register Adries)
+     * Dátumčas vykonania zmeny v referenčnom systéme (t.j. Register Adries).
+     *
      * @var DateTimeImmutable|null
      */
     protected $changedAt;
 
     /**
-     * Vykonaná databázová operácia
+     * Vykonaná databázová operácia.
+     *
      * @var string|null
      */
     protected $databaseOperation;
 
     /**
-     * Identifikátor objektu
+     * Identifikátor objektu.
+     *
      * @var int|null
      */
     protected $objectId;
 
     /**
-     * Identifikátor verzie záznamu
+     * Identifikátor verzie záznamu.
+     *
      * @var int|null
      */
     protected $versionId;
 
     /**
-     * Dôvod vytvorenia záznamu
+     * Dôvod vytvorenia záznamu.
+     *
      * @var string|null
      */
     protected $createdReason;
 
     /**
-     * Dátum a čas platnosti od
+     * Dátum a čas platnosti od.
+     *
      * @var DateTimeImmutable|null
      */
     protected $validFrom;
 
     /**
-     * Dátum a čas platnosti do
+     * Dátum a čas platnosti do.
+     *
      * @var DateTimeImmutable|null
      */
     protected $validTo;
 
     /**
-     * Dátum účinnosti
+     * Dátum účinnosti.
+     *
      * @var DateTimeImmutable|null
      */
     protected $effectiveDate;
 
     /**
-     * Identifikátor číselníka
+     * Identifikátor číselníka.
+     *
      * @var string|null
      */
     protected $codelistCode;
@@ -185,7 +196,7 @@ abstract class Record
      */
     protected function stringOrNull($value): ?string
     {
-        return $value === null ? null : (string)$value;
+        return $value === null ? null : (string) $value;
     }
 
     /**
@@ -193,7 +204,7 @@ abstract class Record
      */
     protected function boolOrNull($value): ?bool
     {
-        return $value === null ? null : (bool)$value;
+        return $value === null ? null : (bool) $value;
     }
 
     /**
@@ -201,7 +212,7 @@ abstract class Record
      */
     protected function intOrNull($value): ?int
     {
-        return $value === null ? null : (int)$value;
+        return $value === null ? null : (int) $value;
     }
 
     /**
@@ -214,6 +225,7 @@ abstract class Record
 
     /**
      * @param mixed $value
+     *
      * @return array<int>
      */
     protected function intArrayOrNull($value): ?array

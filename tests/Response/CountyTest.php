@@ -14,9 +14,9 @@ class CountyTest extends TestCase
     public function testConstruct(): void
     {
         $record = [
-            'countyCode' => 'foo',
-            'countyName' => 'bar',
-            'regionIdentifier' => '123'
+            'countyCode'       => 'foo',
+            'countyName'       => 'bar',
+            'regionIdentifier' => '123',
         ];
 
         $county = new County($record);

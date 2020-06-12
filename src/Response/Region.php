@@ -7,20 +7,22 @@ namespace DigitalCz\RegisterAdries\Response;
 /**
  * Obsahuje informácie o krajoch SR. Kraj je najvyššia administratívna a územnosprávna
  * jednotka a jednotka štátnej správy na Slovensku. Obsahovo tento dataset zodpovedá
- * základnému číselníku CL000023 - Samosprávny kraj
+ * základnému číselníku CL000023 - Samosprávny kraj.
  *
  * @see https://data.gov.sk/dataset/register-adries-register-krajov
  */
 final class Region extends Record
 {
     /**
-     * Kód kraja, obvykle zodpovedá kódu v číselníku CL000023
+     * Kód kraja, obvykle zodpovedá kódu v číselníku CL000023.
+     *
      * @var string|null
      */
     private $regionCode;
 
     /**
-     * Názov kraja
+     * Názov kraja.
+     *
      * @var string|null
      */
     private $regionName;

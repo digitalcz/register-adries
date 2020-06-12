@@ -13,22 +13,26 @@ namespace DigitalCz\RegisterAdries\Response;
 final class County extends Record
 {
     /**
-     * Kód okresu, obvykle zodpovedá kódu v číselníku CL000024
+     * Kód okresu, obvykle zodpovedá kódu v číselníku CL000024.
+     *
      * @var string|null
      */
     private $countyCode;
 
     /**
-     * Názov okresu
+     * Názov okresu.
+     *
      * @var string|null
      */
     private $countyName;
 
     /**
-     * Identifikátor (Region/objectId) nadradeného kraja
+     * Identifikátor (Region/objectId) nadradeného kraja.
+     *
      * @var int|null
      */
     private $regionIdentifier;
+
     /**
      * @param array<string, mixed> $record
      */
