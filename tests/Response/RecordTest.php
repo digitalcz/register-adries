@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\RegisterAdries\Response;
 
 use DateTime;
+use DigitalCz\RegisterAdries\Dummy\DummyRecord;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -28,9 +29,7 @@ class RecordTest extends TestCase
             'codelistCode' => 'CL000023',
         ];
 
-        $dummyClass = new class extends Record {
-        };
-        $dummy = new $dummyClass($record);
+        $dummy = new DummyRecord($record);
 
         self::assertSame((int)$record['_id'], $dummy->getId());
         self::assertSame((int)$record['changeId'], $dummy->getChangeId());
