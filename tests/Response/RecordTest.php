@@ -28,7 +28,9 @@ class RecordTest extends TestCase
             'codelistCode' => 'CL000023',
         ];
 
-        $dummy = new DummyRecord($record);
+
+        $dummy = new class ($record) extends Record {
+        };
 
         self::assertSame((int)$record['_id'], $dummy->getId());
         self::assertSame((int)$record['changeId'], $dummy->getChangeId());
@@ -42,9 +44,4 @@ class RecordTest extends TestCase
         self::assertEquals(new DateTime($record['effectiveDate']), $dummy->getEffectiveDate());
         self::assertSame($record['codelistCode'], $dummy->getCodelistCode());
     }
-}
-
-// phpcs:ignore
-class DummyRecord extends Record
-{
 }
