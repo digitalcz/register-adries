@@ -28,7 +28,7 @@ class RecordTest extends TestCase
             'codelistCode' => 'CL000023',
         ];
 
-        $dummyClass = new class() extends Record {
+        $dummyClass = new class () extends Record {
         };
         $dummy = new $dummyClass($record);
 
