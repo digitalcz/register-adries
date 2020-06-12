@@ -28,9 +28,9 @@ class RecordTest extends TestCase
             'codelistCode' => 'CL000023',
         ];
 
-
-        $dummy = new class ($record) extends Record {
+        $dummyClass = new class extends Record {
         };
+        $dummy = new $dummyClass($record);
 
         self::assertSame((int)$record['_id'], $dummy->getId());
         self::assertSame((int)$record['changeId'], $dummy->getChangeId());
