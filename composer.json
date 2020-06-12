@@ -14,18 +14,23 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Digital Solutions s.r.o.",
-            "email": "devs@digital.cz",
-            "homepage": "https://digital.cz",
+            "name": "Pavel Stejskal",
+            "email": "spajxo@gmail.com",
             "role": "Developer"
         }
     ],
+    "support": {
+        "email": "devs@digital.cz"
+    },
     "require": {
         "php": "~7.2",
         "ext-json": "*",
         "php-http/discovery": "^1.7",
         "psr/http-client": "^1.0",
         "psr/http-message": "^1.0"
+    },
+    "suggest": {
+        "symfony/http-client": "*"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "v0.6",
