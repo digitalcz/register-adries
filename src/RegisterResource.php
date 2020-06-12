@@ -96,7 +96,9 @@ final class RegisterResource
     private function guardResource(string $resource): void
     {
         if (!array_key_exists($resource, self::$ids)) {
-            throw new InvalidArgumentException('Unknown resource ' . $resource);
+            throw new InvalidArgumentException(
+                sprintf('Unknown resource %s, available are [%s]', $resource, implode(',', array_keys(self::$ids)))
+            );
         }
     }
 }

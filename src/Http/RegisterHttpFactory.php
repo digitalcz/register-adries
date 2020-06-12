@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Http;
 
+use DigitalCz\RegisterAdries\Exception\RequestException;
 use DigitalCz\RegisterAdries\Request\RegisterRequest;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
-use RuntimeException;
 
 final class RegisterHttpFactory implements RegisterHttpFactoryInterface
 {
@@ -66,8 +66,8 @@ final class RegisterHttpFactory implements RegisterHttpFactoryInterface
     {
         $content = json_encode($data);
 
-        if (!is_string($content)) {
-            throw new RuntimeException('Json encoding failure');
+        if (json_last_error() !== JSON_ERROR_NONE || !is_string($content)) {
+            throw RequestException::encodingFailed(json_last_error_msg());
         }
 
         return $this->streamFactory->createStream($content);

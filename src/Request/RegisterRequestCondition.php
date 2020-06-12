@@ -6,7 +6,6 @@ namespace DigitalCz\RegisterAdries\Request;
 
 use DateTimeInterface;
 use InvalidArgumentException;
-use UnexpectedValueException;
 
 final class RegisterRequestCondition
 {
@@ -20,7 +19,7 @@ final class RegisterRequestCondition
     /**
      * @var string[]
      */
-    private static $availabileOperators = [
+    private static $allowedOperators = [
         self::EQ,
         self::GT,
         self::LT,
@@ -59,8 +58,11 @@ final class RegisterRequestCondition
 
     private function guardOperator(string $operator): void
     {
-        if (!in_array($operator, self::$availabileOperators, true)) {
-            throw new InvalidArgumentException('Unknown operator ' . $operator);
+        if (!in_array($operator, self::$allowedOperators, true)) {
+            throw new InvalidArgumentException(sprintf(
+                'Invalid operator, allowed operators are [%s]',
+                implode(',', self::$allowedOperators)
+            ));
         }
     }
 
@@ -102,6 +104,6 @@ final class RegisterRequestCondition
             return (string)$value;
         }
 
-        throw new UnexpectedValueException(sprintf('Unexpected type for value %s', gettype($value)));
+        throw new InvalidArgumentException(sprintf('Cannot normalize value of type %s', gettype($value)));
     }
 }

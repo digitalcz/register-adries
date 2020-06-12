@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\RegisterAdries\Http;
 
+use DigitalCz\RegisterAdries\Exception\RequestException;
 use DigitalCz\RegisterAdries\RegisterResource;
 use DigitalCz\RegisterAdries\Request\RegisterRequest;
 use DigitalCz\RegisterAdries\Request\RegisterRequestCondition;
@@ -89,7 +90,10 @@ class RegisterClientTest extends TestCase
         $httpResponse = $this->createMock(ResponseInterface::class);
         $httpResponse
             ->method('getStatusCode')
-            ->willReturn(500);
+            ->willReturn(409);
+        $httpResponse
+            ->method('getBody')
+            ->willReturn('{"error":{"__type":"Validation Error","filters":["field \"aaa\" not in table"]}}');
         $httpClient->addResponse($httpResponse);
 
         $registerHttpFactory = new RegisterHttpFactory(
@@ -99,8 +103,8 @@ class RegisterClientTest extends TestCase
 
         $client = new RegisterClient($httpClient, $registerHttpFactory, new ResponseFactory());
 
-        $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessage('Request failed');
+        $this->expectException(RequestException::class);
+        $this->expectExceptionMessage('{"__type":"Validation Error","filters":["field \"aaa\" not in table"]}');
         $client->request($request);
     }
 
@@ -126,7 +130,7 @@ class RegisterClientTest extends TestCase
         $client = new RegisterClient($httpClient, $registerHttpFactory, new ResponseFactory());
 
         $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessage('Failed to parse api result');
+        $this->expectExceptionMessage('Invalid response from data.gov.sk: Syntax error');
         $client->request($request);
     }
 
@@ -152,7 +156,7 @@ class RegisterClientTest extends TestCase
         $client = new RegisterClient($httpClient, $registerHttpFactory, new ResponseFactory());
 
         $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessage('Invalid result received');
+        $this->expectExceptionMessage('Invalid response from data.gov.sk: No result key');
         $client->request($request);
     }
 }

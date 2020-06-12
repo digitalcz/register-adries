@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace DigitalCz\RegisterAdries\Response;
 
 use DigitalCz\RegisterAdries\RegisterResource;
-use InvalidArgumentException;
 
 final class RecordFactory implements RecordFactoryInterface
 {
@@ -41,12 +40,6 @@ final class RecordFactory implements RecordFactoryInterface
 
     private function getResultClass(RegisterResource $resource): string
     {
-        if (!array_key_exists($resource->getName(), self::$resourceToRecordClassMap)) {
-            throw new InvalidArgumentException(
-                sprintf('Non-implemented resource %s on %s', $resource->getName(), __CLASS__)
-            );
-        }
-
         return self::$resourceToRecordClassMap[$resource->getName()];
     }
 }

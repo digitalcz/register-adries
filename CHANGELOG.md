@@ -8,6 +8,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ### Added
 - Add property description for Municipality
+- Improve exception messages + introduce package exception
 
 ## [1.0.0] - 2020-06-10
 
