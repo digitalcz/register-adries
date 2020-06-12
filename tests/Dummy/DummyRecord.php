@@ -8,5 +8,4 @@ use DigitalCz\RegisterAdries\Response\Record;
 
 class DummyRecord extends Record
 {
-
 }
