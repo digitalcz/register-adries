@@ -56,8 +56,8 @@
     "scripts": {
         "tests": "phpunit",
         "phpstan": "phpstan analyse",
-        "cs": "phpcs",
-        "csfix": "phpcbf"
+        "cs": "phpcs -p",
+        "csfix": "phpcbf -p"
     },
     "extra": {
         "branch-alias": {
