@@ -34,7 +34,7 @@ jobs:
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
     - name: Run Code Sniffer
-      run: composer phpcs
+      run: composer cs
 
     - name: Run test suite
       run: composer tests
