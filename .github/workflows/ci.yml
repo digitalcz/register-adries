@@ -46,7 +46,12 @@ jobs:
       run: vendor/bin/phpstan analyse --error-format=checkstyle | cs2pr
 
     - name: Tests
-      run: vendor/bin/phpunit --coverage-text
+      run: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
 
     - name: Setup problem matchers for PHPUnit
       run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+    - name: Push Coverage
+      run: |
+          wget https://scrutinizer-ci.com/ocular.phar
+          php ocular.phar code-coverage:upload --format=php-clover coverage.clover
