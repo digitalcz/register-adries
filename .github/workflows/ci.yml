@@ -10,8 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: true
       matrix:
-        php: [7.2, 7.4]
+        php: [7.2, 7.3, 7.4]
         dependency-version: [prefer-lowest, prefer-stable]
 
     name: CI - PHP ${{ matrix.php }} (${{ matrix.dependency-version }})
@@ -45,7 +46,7 @@ jobs:
       run: vendor/bin/phpstan analyse --error-format=checkstyle | cs2pr
 
     - name: Tests
-      run: vendor/bin/phpunit
+      run: vendor/bin/phpunit --coverage-text
 
     - name: Setup problem matchers for PHPUnit
       run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
