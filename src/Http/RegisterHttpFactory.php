@@ -52,12 +52,11 @@ final class RegisterHttpFactory implements RegisterHttpFactoryInterface
      */
     private function createHttpRequest(string $uri, array $body): RequestInterface
     {
-        $request = $this->requestFactory->createRequest('POST', $uri);
-        $request->withBody($this->encodeBody($body));
-        $request->withHeader('Accept', 'application/json');
-        $request->withHeader('Content-Type', 'application/json');
-
-        return $request;
+        return $this->requestFactory
+            ->createRequest('POST', $uri)
+            ->withBody($this->encodeBody($body))
+            ->withHeader('Accept', 'application/json')
+            ->withHeader('Content-Type', 'application/json');
     }
 
     /**
