@@ -30,11 +30,9 @@ jobs:
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
-    - name: Run Code Sniffer
-      run: composer cs
+    - name: PHPCodeSniffer
+      uses: rtCamp/action-phpcs-inspection@v1.0.0
 
     - name: Run test suite
       run: composer tests
+    
