@@ -1,15 +1,17 @@
 name: CI
 
-on: ['push', 'pull_request']
+on: 
+  push:
+    branches: ['master']
+  pull_request:
 
 jobs:
   ci:
     runs-on: ubuntu-latest
 
     strategy:
-      fail-fast: true
       matrix:
-        php: [7.2, 7.3, 7.4]
+        php: [7.2, 7.4]
         dependency-version: [prefer-lowest, prefer-stable]
 
     name: CI - PHP ${{ matrix.php }} (${{ matrix.dependency-version }})
@@ -30,13 +32,13 @@ jobs:
       with:
         php-version: ${{ matrix.php }}
         extensions: mbstring, zip
-        tools: prestissimo, cs2pr, phpstan, phpcs
+        tools: prestissimo, cs2pr
 
     - name: Install Composer dependencies
       run: composer update --${{ matrix.dependency-version }} --no-interaction --prefer-dist
 
     - name: CodeSniffer
-      run: vendor/bin/phpcs --report=checkstyle
+      run: vendor/bin/phpcs --report=checkstyle | cs2pr
 
     - name: PHPStan
       run: vendor/bin/phpstan analyse --error-format=checkstyle | cs2pr
