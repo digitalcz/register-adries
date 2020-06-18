@@ -45,7 +45,7 @@ jobs:
     - name: PHPStan
       run: vendor/bin/phpstan analyse --error-format=checkstyle | cs2pr
 
-    - name: Tests
+    - name: PHPUnit
       run: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml
 
     - name: Setup problem matchers for PHPUnit
