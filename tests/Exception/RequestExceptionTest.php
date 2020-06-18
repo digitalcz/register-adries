@@ -11,10 +11,8 @@ class RequestExceptionTest extends TestCase
 {
     public function testRequestFailed(): void
     {
-        $response = new Response(409, [], json_encode([
-            'success' => false,
-            'error' => ['__type' => 'Validation Error']
-        ]));
+        $body = json_encode(['success' => false, 'error' => ['__type' => 'Validation Error']]);
+        $response = new Response(409, [], $body ?: '');
         $exception = RequestException::requestFailed($response);
         self::assertEquals(409, $exception->getCode());
         self::assertEquals('{"__type":"Validation Error"}', $exception->getMessage());
@@ -22,9 +20,8 @@ class RequestExceptionTest extends TestCase
 
     public function testRequestFailedWithoutErrorInResponse(): void
     {
-        $response = new Response(404, [], json_encode([
-            'success' => false,
-        ]));
+        $body = json_encode(['success' => false]);
+        $response = new Response(404, [], $body ?: '');
         $exception = RequestException::requestFailed($response);
         self::assertEquals(404, $exception->getCode());
         self::assertEquals('{"success":false}', $exception->getMessage());
