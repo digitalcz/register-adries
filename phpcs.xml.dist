@@ -6,7 +6,6 @@
     <file>tests</file>
 
     <arg name="colors" />
-    <arg value="p" />
     <arg value="s" />
 
     <rule ref="PSR12" />

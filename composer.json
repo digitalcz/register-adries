@@ -27,7 +27,7 @@
         "ext-json": "*",
         "php-http/discovery": "^1.7",
         "psr/http-client": "^1.0",
-        "psr/http-message": "^1.0"
+        "psr/http-message": "^1.0.1"
     },
     "suggest": {
         "symfony/http-client": "*"
@@ -56,8 +56,8 @@
     "scripts": {
         "tests": "phpunit",
         "phpstan": "phpstan analyse",
-        "cs": "phpcs",
-        "csfix": "phpcbf"
+        "cs": "phpcs -p",
+        "csfix": "phpcbf -p"
     },
     "extra": {
         "branch-alias": {

@@ -2,9 +2,8 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
-[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
-[![Quality Score][ico-code-quality]][link-code-quality]
+[![CI](https://github.com/digitalcz/register-adries/workflows/CI/badge.svg)]()
+[![codecov](https://codecov.io/gh/digitalcz/register-adries/branch/master/graph/badge.svg)](https://codecov.io/gh/digitalcz/register-adries)
 [![Total Downloads][ico-downloads]][link-downloads]
 
 Provides communication with https://data.gov.sk/dataset/register-adries in PHP OOP via PSR-18 HTTP client
@@ -140,15 +139,9 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [ico-version]: https://img.shields.io/packagist/v/digitalcz/register-adries.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/digitalcz/register-adries/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/digitalcz/register-adries.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/digitalcz/register-adries.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/digitalcz/register-adries.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/digitalcz/register-adries
-[link-travis]: https://travis-ci.org/digitalcz/register-adries
-[link-scrutinizer]: https://scrutinizer-ci.com/g/digitalcz/register-adries/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/digitalcz/register-adries
 [link-downloads]: https://packagist.org/packages/digitalcz/register-adries
 [link-author]: https://github.com/digitalcz
 [link-contributors]: ../../contributors
