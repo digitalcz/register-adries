@@ -9,6 +9,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - Add property description for Municipality
 - Add custom package exceptions
+- Add composer check script
 
 ### Changed
 - Improve exception messages

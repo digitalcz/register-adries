@@ -25,8 +25,8 @@ We accept contributions via Pull Requests on [Github](https://github.com/digital
 ## Running Tests
 
 ``` bash
-$ composer tests
-$ composer phpstan
+$ composer checks   # codesniffer + phpstan + phpunit
+$ composer csfix    # code beautifier
 ```
 
 
