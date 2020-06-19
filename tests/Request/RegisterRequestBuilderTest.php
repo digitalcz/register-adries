@@ -15,12 +15,22 @@ use PHPUnit\Framework\TestCase;
  */
 class RegisterRequestBuilderTest extends TestCase
 {
+    public function testResource(): void
+    {
+        $client = $this->createStub(RegisterClientInterface::class);
+        $builder = new RegisterRequestBuilder($client);
+        $builder->resource(RegisterResource::REGION);
+        $query = $builder->getQuery();
+
+        self::assertEquals(RegisterResource::REGION, $query->getResource()->getName());
+    }
+
     /**
      * @dataProvider provideResourceMethods
      */
     public function testResourceMethods(string $method, RegisterResource $expectedResource): void
     {
-        $client = $this->createMock(RegisterClientInterface::class);
+        $client = $this->createStub(RegisterClientInterface::class);
         $builder = new RegisterRequestBuilder($client);
         $query = $builder->$method()->getQuery();
 
@@ -49,7 +59,7 @@ class RegisterRequestBuilderTest extends TestCase
      */
     public function testConditionMethods(string $method, array $params, string $expectedConditionInSql): void
     {
-        $client = $this->createMock(RegisterClientInterface::class);
+        $client = $this->createStub(RegisterClientInterface::class);
         $builder = new RegisterRequestBuilder($client);
         $builder->regions();
         $builder->$method(...$params);
