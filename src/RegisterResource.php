@@ -43,6 +43,11 @@ final class RegisterResource
         $this->resource = $resource;
     }
 
+    public static function create(string $resource): self
+    {
+        return new self($resource);
+    }
+
     public static function createRegion(): self
     {
         return new self(self::REGION);

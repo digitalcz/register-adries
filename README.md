@@ -20,7 +20,6 @@ $ composer require digitalcz/register-adries
 
 ```php
 $register = new DigitalCz\RegisterAdries\RegisterAdries();
-
 $response = $register
     ->request()             // create RequestBuilder
     ->regions()             // set resource to fetch
@@ -36,7 +35,6 @@ $response->getTotal();      // total number of results
 
 ```php
 $register = new DigitalCz\RegisterAdries\RegisterAdries();
-
 $register
     ->request()                         // create RequestBuilder
     // comparison
@@ -80,9 +78,14 @@ $register->findEntrance(9);         // returns DigitalCz\RegisterAdries\Response
 
 Available on builder as
 ```php
+$register = new DigitalCz\RegisterAdries\RegisterAdries();
 $register 
+    ->request()
     // ...
+    ->resource('region')
+    ->resource(DigitalCz\RegisterAdries\RegisterResource::REGION)
     ->regions()
+    // ...
     ->counties()
     ->municipalities()
     ->districts()
@@ -90,7 +93,7 @@ $register
     ->units()
     ->buildings()
     ->entrances();
-// It isn't possible to chain more resources, this is just example
+// It isn't possible to request more resources, this is just example
 ```
 
 #### Using your own http client

@@ -10,6 +10,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add property description for Municipality
 - Add custom package exceptions
 - Add composer check script
+- Add RegisterRequestBuilder::resource method to improve genericity
 
 ### Changed
 - Improve exception messages

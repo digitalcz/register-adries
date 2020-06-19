@@ -41,6 +41,11 @@ final class RegisterRequestBuilder
         $this->client = $client;
     }
 
+    public function resource(string $resource): self
+    {
+        return $this->setResource(RegisterResource::create($resource));
+    }
+
     public function regions(): self
     {
         return $this->setResource(RegisterResource::createRegion());

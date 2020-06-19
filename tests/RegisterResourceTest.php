@@ -5,14 +5,32 @@ declare(strict_types=1);
 namespace DigitalCz\RegisterAdries;
 
 use Generator;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 class RegisterResourceTest extends TestCase
 {
+    public function testCreate(): void
+    {
+        $resource = RegisterResource::create('region');
+        self::assertEquals('region', $resource->getName());
+        self::assertEquals('3bbb0b04-8732-4099-b074-c7bd8f8fa080', $resource->getId());
+    }
+
+    public function testCreateUnknownResource(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            'Unknown resource foo, available are [region,county,municipality,district,street,unit,building,entrance]'
+        );
+        RegisterResource::create('foo');
+    }
+
+
     /**
      * @dataProvider provideCreate
      */
-    public function testCreate(string $name, string $id): void
+    public function testNamedConstructors(string $name, string $id): void
     {
         $createMethod = 'create' . ucfirst($name);
         $resource = RegisterResource::$createMethod();
