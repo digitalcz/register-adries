@@ -114,9 +114,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Testing
 
 ``` bash
-$ composer tests
-$ composer phpstan
-$ composer cs       # code sniffer
+$ composer checks   # codesniffer + phpstan + phpunit
 $ composer csfix    # code beautifier
 ```
 
