@@ -10,6 +10,7 @@ use InvalidArgumentException;
 final class RegisterRequestCondition
 {
     public const EQ = '=';
+    public const NEQ = '!=';
     public const GT = '>';
     public const LT = '<';
     public const GTE = '>=';
@@ -21,6 +22,7 @@ final class RegisterRequestCondition
      */
     private static $allowedOperators = [
         self::EQ,
+        self::NEQ,
         self::GT,
         self::LT,
         self::GTE,
