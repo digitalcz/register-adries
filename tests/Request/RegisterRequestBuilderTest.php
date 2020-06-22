@@ -81,6 +81,7 @@ class RegisterRequestBuilderTest extends TestCase
         yield ['whereGt', ['foo', 'baz'], '"foo" > \'baz\''];
         yield ['whereGte', ['foo', 'baz'], '"foo" >= \'baz\''];
         yield ['whereEq', ['foo', 'baz'], '"foo" = \'baz\''];
+        yield ['whereNeq', ['foo', 'baz'], '"foo" != \'baz\''];
         yield ['whereLike', ['foo', 'baz'], '"foo" LIKE \'baz\''];
         yield ['where', ['foo', 'baz', '='], '"foo" = \'baz\''];
     }

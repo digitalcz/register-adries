@@ -157,6 +157,14 @@ final class RegisterRequestBuilder
     /**
      * @param mixed $value
      */
+    public function whereNeq(string $field, $value): self
+    {
+        return $this->where($field, $value, RegisterRequestCondition::NEQ);
+    }
+
+    /**
+     * @param mixed $value
+     */
     public function whereLike(string $field, $value): self
     {
         return $this->where($field, $value, RegisterRequestCondition::LIKE);
