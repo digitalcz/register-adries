@@ -35,7 +35,7 @@ class RegisterRequestConditionTest extends TestCase
     public function testInvalidOperator(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Invalid operator, allowed operators are [=,>,<,>=,<=,LIKE]');
+        $this->expectExceptionMessage('Invalid operator, allowed operators are [=,!=,>,<,>=,<=,LIKE]');
         new RegisterRequestCondition('foo', 'bar', '<>');
     }
 

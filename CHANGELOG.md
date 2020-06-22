@@ -6,6 +6,13 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 
+### Added
+- Add new NEQ operator on RequestConditions
+- Add new RegisterRequestBuilder::whereNeq method
+
+### Deprecated
+- Deprecated RegisterRequestBuilder::wherePartial in favor of whereContains
+
 ## [1.1.0] - 2020-06-19
 
 ### Added

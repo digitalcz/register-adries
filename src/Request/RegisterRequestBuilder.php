@@ -109,7 +109,15 @@ final class RegisterRequestBuilder
         return $this->whereLike($field, "%$text");
     }
 
+    /**
+     * @deprecated Use whereContains instead
+     */
     public function wherePartial(string $field, string $text): self
+    {
+        return $this->whereContains($field, $text);
+    }
+
+    public function whereContains(string $field, string $text): self
     {
         return $this->whereLike($field, "%$text%");
     }
@@ -152,6 +160,14 @@ final class RegisterRequestBuilder
     public function whereEq(string $field, $value): self
     {
         return $this->where($field, $value, RegisterRequestCondition::EQ);
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public function whereNeq(string $field, $value): self
+    {
+        return $this->where($field, $value, RegisterRequestCondition::NEQ);
     }
 
     /**
