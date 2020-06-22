@@ -76,6 +76,7 @@ class RegisterRequestBuilderTest extends TestCase
         yield ['whereStartsWith', ['foo', 'baz'], '"foo" LIKE \'baz%\''];
         yield ['whereEndsWith', ['foo', 'baz'], '"foo" LIKE \'%baz\''];
         yield ['wherePartial', ['foo', 'baz'], '"foo" LIKE \'%baz%\''];
+        yield ['whereContains', ['foo', 'baz'], '"foo" LIKE \'%baz%\''];
         yield ['whereLt', ['foo', 'baz'], '"foo" < \'baz\''];
         yield ['whereLte', ['foo', 'baz'], '"foo" <= \'baz\''];
         yield ['whereGt', ['foo', 'baz'], '"foo" > \'baz\''];

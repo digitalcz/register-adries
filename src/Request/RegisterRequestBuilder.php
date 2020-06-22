@@ -109,7 +109,15 @@ final class RegisterRequestBuilder
         return $this->whereLike($field, "%$text");
     }
 
+    /**
+     * @deprecated Use whereContains instead
+     */
     public function wherePartial(string $field, string $text): self
+    {
+        return $this->whereContains($field, $text);
+    }
+
+    public function whereContains(string $field, string $text): self
     {
         return $this->whereLike($field, "%$text%");
     }
