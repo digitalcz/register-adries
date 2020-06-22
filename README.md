@@ -39,6 +39,7 @@ $register
     ->request()                         // create RequestBuilder
     // comparison
     ->whereEq('foo', 'bar')             // `foo = bar`
+    ->whereNeq('foo', 'bar')             // `foo != bar`
     ->whereGt('foo', 40)                // `foo > 40` 
     ->whereGte('foo', 40)               // `foo >= 40` 
     ->whereLt('foo', 40)                // `foo < 40` 
@@ -47,7 +48,7 @@ $register
     ->whereLike('foo', 'bar')           // `foo LIKE bar`
     ->whereStartsWith('foo', 'bar')     // `foo LIKE bar%`
     ->whereEndsWith('foo', 'bar')       // `foo LIKE %bar`
-    ->wherePartial('foo', 'bar')        // `foo LIKE %bar%`
+    ->whereContains('foo', 'bar')        // `foo LIKE %bar%`
     // helpers
     ->whereObjectId(12)                 // `objectId = 12`
     ->onlyValid();                      // `WHERE {now} > validFrom AND {now} < validTo`
