@@ -13,6 +13,11 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Deprecated
 - Deprecated RegisterRequestBuilder::wherePartial in favor of whereContains
 
+## [1.2.0] - 2022-12-07
+
+### Added
+- Add support for PHP8
+
 ## [1.1.0] - 2020-06-19
 
 ### Added

@@ -23,7 +23,7 @@
         "email": "devs@digital.cz"
     },
     "require": {
-        "php": "~7.2",
+        "php": "~7.2||~8.0",
         "ext-json": "*",
         "php-http/discovery": "^1.7",
         "psr/http-client": "^1.0",
@@ -70,6 +70,9 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }
