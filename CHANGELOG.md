@@ -9,14 +9,13 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - Add new NEQ operator on RequestConditions
 - Add new RegisterRequestBuilder::whereNeq method
+- Add support for PHP8
 
 ### Deprecated
 - Deprecated RegisterRequestBuilder::wherePartial in favor of whereContains
 
-## [1.2.0] - 2022-12-07
-
-### Added
-- Add support for PHP8
+### Removed
+- Drop support for PHP < 7.4
 
 ## [1.1.0] - 2020-06-19
 
