@@ -13,7 +13,7 @@ class RequestException extends RuntimeException
         $bodyContents = (string)$httpResponse->getBody();
         $parsedBody = json_decode($bodyContents, true);
 
-        if (json_last_error() === JSON_ERROR_NONE) {
+        if (json_last_error() === JSON_ERROR_NONE && is_array($parsedBody)) {
             $error = json_encode($parsedBody['error'] ?? $parsedBody) ?: $bodyContents;
         } else {
             $error = $bodyContents;

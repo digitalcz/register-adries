@@ -19,7 +19,7 @@ final class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @param array<string, mixed> $result
+     * @param array{records?: array<int, array<string, mixed>>, total?: int} $result
      */
     public function createResponse(RegisterResource $resource, array $result): Response
     {

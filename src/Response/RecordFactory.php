@@ -9,7 +9,7 @@ use DigitalCz\RegisterAdries\RegisterResource;
 final class RecordFactory implements RecordFactoryInterface
 {
     /**
-     * @var string[]
+     * @var array<string, class-string<Record>>
      */
     private static $resourceToRecordClassMap = [
         RegisterResource::REGION => Region::class,
@@ -38,6 +38,9 @@ final class RecordFactory implements RecordFactoryInterface
         );
     }
 
+    /**
+     * @return class-string<Record>
+     */
     private function getResultClass(RegisterResource $resource): string
     {
         return self::$resourceToRecordClassMap[$resource->getName()];
