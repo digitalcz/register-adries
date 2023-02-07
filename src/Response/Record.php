@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\RegisterAdries\Response;
 
 use DateTimeImmutable;
+use Stringable;
 
 abstract class Record
 {
@@ -185,7 +186,7 @@ abstract class Record
      */
     protected function stringOrNull($value): ?string
     {
-        return $value === null ? null : (string)$value;
+        return is_scalar($value) || $value instanceof Stringable ? (string)$value : null;
     }
 
     /**
@@ -201,7 +202,7 @@ abstract class Record
      */
     protected function intOrNull($value): ?int
     {
-        return $value === null ? null : (int)$value;
+        return !is_numeric($value) ? null : (int)$value;
     }
 
     /**
@@ -209,7 +210,7 @@ abstract class Record
      */
     protected function dateTimeOrNull($value): ?DateTimeImmutable
     {
-        return $value === null ? null : new DateTimeImmutable($value);
+        return is_scalar($value) || $value instanceof Stringable ? new DateTimeImmutable((string)$value) : null;
     }
 
     /**

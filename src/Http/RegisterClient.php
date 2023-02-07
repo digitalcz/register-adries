@@ -64,6 +64,7 @@ final class RegisterClient implements RegisterClientInterface
 
         // count request
         $sqlCountHttpRequest = $this->httpFactory->createSqlCountRequest($request);
+        /** @var array{records: array<int, array{count: int}>} $countResult */
         $countResult = $this->sendHttpRequest($sqlCountHttpRequest);
 
         // add count to results response
@@ -93,7 +94,7 @@ final class RegisterClient implements RegisterClientInterface
     {
         $body = json_decode((string)$httpResponse->getBody(), true);
 
-        if (json_last_error() !== JSON_ERROR_NONE) {
+        if (json_last_error() !== JSON_ERROR_NONE || !is_array($body)) {
             throw RequestException::invalidResponse(json_last_error_msg());
         }
 
