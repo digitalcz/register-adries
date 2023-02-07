@@ -6,6 +6,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 
+## [1.2.0] - 2022-02-07
+
 ### Added
 - Add new NEQ operator on RequestConditions
 - Add new RegisterRequestBuilder::whereNeq method
